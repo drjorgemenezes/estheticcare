@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Arquitecta';
+  src: url('/arquitecta/ArquitectaBold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Noto Serif", serif;
+  --font-brand: "Arquitecta", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Manrope", sans-serif;
+
+  --color-primary: #e6c364;
+  --color-primary-container: #c9a84c;
+  --color-on-primary: #3d2e00;
+  --color-surface: #131313;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #d0c5b2;
+  --color-outline-variant: #4d4637;
+}
+
+@layer utilities {
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #e6c364 0%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gold-shimmer-btn {
+    background: linear-gradient(135deg, #e6c364 0%, #c9a84c 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gold-shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+  }
+
+  .gold-shimmer-btn:hover::after {
+    left: 120%;
+  }
+
+  .glass-nav {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

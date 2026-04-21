@@ -1,0 +1,7 @@
+{
+  "name": "Esthetic Care",
+  "description": "Excelência em Cirurgia Plástica e Estética. Realce sua beleza natural com tecnologia de ponta e cuidado humanizado.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
