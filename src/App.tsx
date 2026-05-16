@@ -69,7 +69,7 @@ export default function App() {
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
-      const scrollAmount = window.innerWidth > 768 ? 432 : window.innerWidth * 0.85 + 24;
+      const scrollAmount = window.innerWidth > 768 ? 392 : window.innerWidth * 0.85 + 24;
       carouselRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -320,7 +320,7 @@ export default function App() {
         
         <div className="max-w-[1920px] mx-auto px-6 mb-16 text-center relative z-10">
           <span className="font-label uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary text-[10px] md:text-xs mb-6 block font-medium">Excelência em cada detalhe</span>
-          <h2 className="font-headline text-4xl md:text-6xl text-[#f5f5f5] mb-6">Procedimentos de Elite</h2>
+          <h2 className="font-headline text-4xl md:text-6xl text-[#f5f5f5] mb-6">Procedimentos</h2>
           <p className="text-[#a0a0a0] font-light max-w-2xl mx-auto text-sm md:text-base">
             Tecnologia avançada, técnicas exclusivas e um olhar artístico para realçar o que você tem de melhor.
           </p>
@@ -354,15 +354,15 @@ export default function App() {
             {/* Navigation Arrows */}
             <button 
               onClick={() => scrollCarousel('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 lg:-translate-x-12 z-20 w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-90 hover:opacity-100 hover:scale-105"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={24} />
             </button>
             <button 
               onClick={() => scrollCarousel('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 lg:translate-x-12 z-20 w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-90 hover:opacity-100 hover:scale-105"
             >
-              <ArrowRight size={20} />
+              <ArrowRight size={24} />
             </button>
 
             {/* Carousel Container */}
@@ -375,7 +375,7 @@ export default function App() {
                 <Link 
                   key={service.title}
                   to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
-                  className="flex-none w-[85vw] md:w-[400px] h-[550px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
+                  className="flex-none w-[85vw] sm:w-[320px] md:w-[360px] h-[480px] md:h-[500px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
                 >
                   {/* Background Image */}
                   <img 

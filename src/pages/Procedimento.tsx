@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   ChevronLeft, 
   ChevronDown, 
@@ -25,6 +25,7 @@ interface ProcedureInfo {
 
 export default function Procedimento() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
@@ -150,13 +151,20 @@ export default function Procedimento() {
       
       {/* Back Button */}
       <div className="fixed top-0 left-0 z-50 p-6 md:p-8">
-        <Link 
-          to="/" 
+        <button 
+          onClick={(e) => {
+            e.preventDefault();
+            if (window.history.length > 2) {
+              navigate(-1);
+            } else {
+              navigate('/');
+            }
+          }}
           className="group flex items-center gap-2 text-primary hover:text-primary-container transition-colors duration-300"
         >
           <ChevronLeft size={24} strokeWidth={1.5} />
           <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] leading-none">Voltar</span>
-        </Link>
+        </button>
       </div>
 
       <main>

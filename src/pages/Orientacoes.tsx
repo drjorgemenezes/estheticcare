@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   ChevronLeft, 
   ClipboardCheck, 
@@ -12,6 +12,8 @@ import {
 import { motion } from 'motion/react';
 
 export default function Orientacoes() {
+  const navigate = useNavigate();
+
   // Rola a página para o topo ao carregar
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -106,13 +108,20 @@ export default function Orientacoes() {
       
       {/* Back Button */}
       <div className="fixed top-0 left-0 z-50 p-8">
-        <Link 
-          to="/" 
+        <button 
+          onClick={(e) => {
+            e.preventDefault();
+            if (window.history.length > 2) {
+              navigate(-1);
+            } else {
+              navigate('/');
+            }
+          }}
           className="group flex items-center gap-2 text-primary hover:text-primary-container transition-colors duration-300"
         >
           <ChevronLeft size={24} strokeWidth={1.5} />
           <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] leading-none">Voltar</span>
-        </Link>
+        </button>
       </div>
 
       <main>
