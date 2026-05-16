@@ -403,15 +403,6 @@ export default function App() {
             </div>
           </div>
           
-          <div className="mt-12 text-center relative z-10">
-             <Link to="/todos-procedimentos" className="inline-flex items-center gap-6 group">
-               <span className="font-label uppercase tracking-[0.3em] text-[10px] md:text-xs text-primary/80 group-hover:text-primary transition-colors font-bold">Ver todos os procedimentos</span>
-               <div className="flex items-center text-primary group-hover:translate-x-4 transition-transform duration-500">
-                 <div className="w-16 h-[1px] bg-primary/60 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
-                 <ArrowRight size={14} className="ml-[-4px]" />
-               </div>
-             </Link>
-          </div>
         </div>
       </section>
 
