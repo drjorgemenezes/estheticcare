@@ -364,37 +364,37 @@ export default function App() {
                 <Link 
                   key={service.title}
                   to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
-                  className="flex-none w-[85vw] md:w-[340px] h-[460px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-[#222222] shadow-2xl"
+                  className="flex-none w-[85vw] md:w-[400px] h-[550px] snap-center block relative rounded-xl overflow-hidden group cursor-pointer"
                 >
                   {/* Background Image */}
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover grayscale-[50%] sepia-[30%] opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700" 
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
                   />
                   
                   {/* Dark Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent opacity-100"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-transparent opacity-80"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent opacity-90"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/30 to-transparent"></div>
                   
                   {/* Content */}
-                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col">
+                  <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
                     {/* Top Number */}
                     <div className="mb-auto">
-                      <span className="font-label text-primary text-[10px] md:text-xs tracking-[0.2em] block mb-2">{String(idx + 1).padStart(2, '0')}</span>
-                      <div className="w-6 h-[1px] bg-primary opacity-60"></div>
+                      <span className="font-label text-primary text-xs tracking-[0.2em] block">{String(idx + 1).padStart(2, '0')}</span>
+                      <div className="w-8 h-[1px] bg-primary mt-3 opacity-50"></div>
                     </div>
                     
                     {/* Bottom Info */}
-                    <div className="mt-auto">
-                      <h3 className="font-headline text-2xl md:text-3xl text-[#f5f5f5] mb-3">{service.title}</h3>
-                      <p className="text-[#a0a0a0] font-light text-xs md:text-[13px] leading-relaxed mb-6 line-clamp-3">
+                    <div className="mt-auto transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                      <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4">{service.title}</h3>
+                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
                         {service.desc}
                       </p>
                       
                       {/* Arrow button */}
-                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
-                        <ArrowRight size={14} className="md:w-4 md:h-4" />
+                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                        <ArrowRight size={16} />
                       </div>
                     </div>
                   </div>
