@@ -375,18 +375,18 @@ export default function App() {
                 <Link 
                   key={service.title}
                   to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
-                  className="flex-none w-[85vw] md:w-[400px] h-[550px] snap-center block relative rounded-xl overflow-hidden group cursor-pointer"
+                  className="flex-none w-[85vw] md:w-[400px] h-[550px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
                 >
                   {/* Background Image */}
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
                   />
                   
                   {/* Dark Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent opacity-90"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent opacity-100"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/40 via-transparent to-transparent opacity-60"></div>
                   
                   {/* Content */}
                   <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
@@ -397,14 +397,14 @@ export default function App() {
                     </div>
                     
                     {/* Bottom Info */}
-                    <div className="mt-auto transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
-                      <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4">{service.title}</h3>
-                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                    <div className="mt-auto">
+                      <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4 tracking-tight">{service.title}</h3>
+                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 max-w-[90%]">
                         {service.desc}
                       </p>
                       
                       {/* Arrow button */}
-                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-all duration-300">
                         <ArrowRight size={16} />
                       </div>
                     </div>
