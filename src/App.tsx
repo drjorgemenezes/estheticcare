@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRight, 
+  ArrowLeft,
   ChevronDown, 
   ChevronLeft,
   ChevronRight,
@@ -32,9 +33,38 @@ const IMAGES = {
   contact: "https://lh3.googleusercontent.com/aida-public/AB6AXuAt_dkj-uhMl9UayZwtTM9I-PpplnVBfYQ6spu4EWSBPeoL6IGaXAh7Z8J05nYrz0BdkboFE-yhmOyLDElbM348XhSAHQ4-eyEzZkWTrr2TpR4UUcfEQ0AABJu7BQngBoqmzZ9tTe-mRwHuhaDYLdbIPjzOdpoZue1L4bGzq_XyBP5QDucW6-NpYwIfGnQZNgoxDmqGLemRGAE26XnaPI56-90juUsh2BVTaRCKl4tYYYqfWBsxDasMYAugXXvFaVtiz1UltymeExk"
 };
 
+type ProcedureCategory = 'FACE' | 'CORPO' | 'MAMAS';
+
+const PROCEDIMENTOS = [
+  { title: 'Rinoplastia', desc: 'Harmonia facial através do equilíbrio e da naturalidade.', category: 'FACE' as ProcedureCategory, img: '/rinoplastia.png' },
+  { title: 'Otoplastia', desc: 'Correção das orelhas em abano, valorizando sua autoestima.', category: 'FACE' as ProcedureCategory, img: '/otoplastia.png' },
+  { title: 'Blefaroplastia', desc: 'Rejuvenescimento do olhar com naturalidade e leveza.', category: 'FACE' as ProcedureCategory, img: '/blefaroplastia.png' },
+  { title: 'Mentoplastia', desc: 'Remodelação do queixo para um perfil facial mais equilibrado.', category: 'FACE' as ProcedureCategory, img: '/mentoplastia.png' },
+  { title: 'Lifting Facial', desc: 'Rejuvenescimento facial avançado, suavizando rugas e flacidez profundas.', category: 'FACE' as ProcedureCategory, img: '/lifting facial.png' },
+  { title: 'Abdominoplastia', desc: 'Cirurgia que remove excesso de pele e gordura abdominal, indicada após gravidez ou perda de peso.', category: 'CORPO' as ProcedureCategory, img: '/ABDOMINOPLASTIA.png' },
+  { title: 'Lipoaspiração', desc: 'Cirurgia que remove gordura localizada e remodela o corpo, melhorando o contorno corporal.', category: 'CORPO' as ProcedureCategory, img: '/LIPOASPIRACAO.png' },
+  { title: 'Dorsoplastia', desc: 'Remoção de dobras de pele e flacidez na região das costas.', category: 'CORPO' as ProcedureCategory, img: '/dorsoplastia.png' },
+  { title: 'Braquioplastia', desc: 'Cirurgia para tratar a flacidez e o excesso de pele nos braços.', category: 'CORPO' as ProcedureCategory, img: '/braquioplastia.png' },
+  { title: 'Dermolipectomia Crural', desc: 'Remoção do excesso de pele e gordura da parte interna das coxas.', category: 'CORPO' as ProcedureCategory, img: '/dermolipectomia crural.png' },
+  { title: 'Mamoplastia', desc: 'Cirurgia que aumenta, reduz ou eleva as mamas, corrigindo assimetrias e restaurando harmonia.', category: 'MAMAS' as ProcedureCategory, img: '/MAMOPLASTIA.png' },
+  { title: 'Ginecomastia', desc: 'Correção do aumento das mamas em homens, restaurando o contorno torácico.', category: 'MAMAS' as ProcedureCategory, img: '/ginecomastia.png' },
+];
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<ProcedureCategory>('FACE');
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = window.innerWidth > 768 ? 432 : window.innerWidth * 0.85 + 24;
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
 
   useEffect(() => {
@@ -273,55 +303,114 @@ export default function App() {
 
 
       {/* Services */}
-      <section className="py-32 bg-surface" id="procedimentos">
-        <div className="max-w-7xl mx-auto px-6 mb-20 text-center">
-          <span className="font-label uppercase tracking-[0.3em] text-primary text-sm mb-4 block">Especialidades</span>
-          <h2 className="font-headline text-4xl md:text-6xl text-on-surface">Procedimentos de Elite</h2>
+      <section className="py-32 bg-[#0a0a0a] relative overflow-hidden" id="procedimentos">
+        {/* Subtle golden waves background at the bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-64 opacity-20 pointer-events-none" style={{ background: 'radial-gradient(ellipse at bottom, rgba(201, 168, 76, 0.4) 0%, transparent 70%)' }}></div>
+        
+        <div className="max-w-[1920px] mx-auto px-6 mb-16 text-center relative z-10">
+          <span className="font-label uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary text-[10px] md:text-xs mb-6 block font-medium">Excelência em cada detalhe</span>
+          <h2 className="font-headline text-4xl md:text-6xl text-[#f5f5f5] mb-6">Procedimentos de Elite</h2>
+          <p className="text-[#a0a0a0] font-light max-w-2xl mx-auto text-sm md:text-base">
+            Tecnologia avançada, técnicas exclusivas e um olhar artístico para realçar o que você tem de melhor.
+          </p>
         </div>
         
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: 'Abdominoplastia', desc: 'Cirurgia que remove excesso de pele e gordura abdominal, indicada após gravidez ou perda de peso.', icon: "/SVG/Abdominoplastia.svg" },
-              { title: 'Mamoplastia', desc: 'Cirurgia que aumenta, reduz ou eleva as mamas, corrigindo assimetrias e restaurando harmonia.', icon: "/SVG/Mamoplastia.svg" },
-              { title: 'Lipoaspiração', desc: 'Cirurgia que remove gordura localizada e remodela o corpo, melhorando o contorno corporal.', icon: "/SVG/Lipoaspiracao.svg" },
-              { title: 'Rinoplastia', desc: 'Aperfeiçoamento estético e funcional do nariz, promovendo harmonia facial.', icon: "/SVG/Rinoplastia.svg" },
-              { title: 'Ginecomastia', desc: 'Correção do aumento das mamas em homens, restaurando o contorno torácico.', icon: "/SVG/Ginecomastia.svg" },
-              { title: 'Otoplastia', desc: 'Cirurgia para correção das orelhas em abano, melhorando a proporção facial.', icon: "/SVG/Otoplastia.svg" },
-              { title: 'Mentoplastia', desc: 'Remodelação do queixo para um perfil facial mais equilibrado.', icon: "/SVG/Mentoplastia.svg" },
-              { title: 'Lifting Facial', desc: 'Rejuvenescimento facial avançado, suavizando rugas e flacidez profundas.', icon: "/SVG/Lifting facial.svg" },
-              { title: 'Blefaroplastia', desc: 'Remoção do excesso de pele das pálpebras, rejuvenescendo o olhar.', icon: "/SVG/Blefaroplastia.svg" },
-              { title: 'Dorsoplastia', desc: 'Remoção de dobras de pele e flacidez na região das costas.', icon: "/SVG/Dorsoplastia.svg" },
-              { title: 'Braquioplastia', desc: 'Cirurgia para tratar a flacidez e o excesso de pele nos braços.', icon: "/SVG/Braquioplastia.svg" },
-              { title: 'Dermolipectomia Crural', desc: 'Remoção do excesso de pele e gordura da parte interna das coxas.', icon: "/SVG/Dermolipectomia crural.svg" },
-            ].map((service, idx) => (
-              <Link 
-                key={service.title}
-                to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
-                className="block h-full"
-              >
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="h-full group bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-500 relative border-l border-primary/10 hover:border-primary cursor-pointer flex flex-col"
-                >
-                  {service.icon ? (
-                    <img src={service.icon} alt={service.title} className="w-12 h-12 mb-6" />
-                  ) : (
-                    <div className="w-12 h-12 mb-6 flex items-center justify-center text-primary/60 border border-primary/20 rounded-sm">
-                      <Heart size={20} />
-                    </div>
+        <div className="max-w-[1920px] mx-auto px-6 relative z-10">
+          {/* Category Filter */}
+          <div className="flex justify-center items-center gap-6 md:gap-12 mb-16">
+            {(['FACE', 'CORPO', 'MAMAS'] as ProcedureCategory[]).map((category, idx, arr) => (
+              <div key={category} className="flex items-center gap-6 md:gap-12">
+                <button
+                  onClick={() => setActiveCategory(category)}
+                  className={cn(
+                    "font-label uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs transition-all duration-300 pb-2 border-b-2",
+                    activeCategory === category 
+                      ? "text-primary border-primary" 
+                      : "text-[#666666] border-transparent hover:text-[#aaaaaa]"
                   )}
-                  <h3 className="font-headline text-2xl text-on-surface mb-4">{service.title}</h3>
-                  <p className="text-on-surface-variant font-light mb-8 flex-grow">{service.desc}</p>
-                  <div className="font-label uppercase text-[10px] tracking-widest text-primary flex items-center gap-2 group-hover:gap-4 transition-all mt-auto">
-                    Ver detalhes <ArrowRight size={14} />
-                  </div>
-                </motion.div>
-              </Link>
+                >
+                  {category}
+                </button>
+                {idx < arr.length - 1 && (
+                  <span className="text-[#333333]">|</span>
+                )}
+              </div>
             ))}
+          </div>
+
+          {/* Carousel Wrapper */}
+          <div className="relative group">
+            {/* Navigation Arrows */}
+            <button 
+              onClick={() => scrollCarousel('left')}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 lg:-translate-x-12 z-20 w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 hidden md:flex"
+            >
+              <ArrowLeft size={20} />
+            </button>
+            <button 
+              onClick={() => scrollCarousel('right')}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 lg:translate-x-12 z-20 w-12 h-12 rounded-full border border-primary/40 flex items-center justify-center text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 hidden md:flex"
+            >
+              <ArrowRight size={20} />
+            </button>
+
+            {/* Carousel Container */}
+            <div 
+              ref={carouselRef}
+              className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 pt-4 px-4 -mx-4 [&::-webkit-scrollbar]:hidden"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {PROCEDIMENTOS.filter(p => p.category === activeCategory).map((service, idx) => (
+                <Link 
+                  key={service.title}
+                  to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
+                  className="flex-none w-[85vw] md:w-[400px] h-[550px] snap-center block relative rounded-xl overflow-hidden group cursor-pointer"
+                >
+                  {/* Background Image */}
+                  <img 
+                    src={service.img} 
+                    alt={service.title} 
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
+                  
+                  {/* Dark Overlays */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent opacity-90"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/30 to-transparent"></div>
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
+                    {/* Top Number */}
+                    <div className="mb-auto">
+                      <span className="font-label text-primary text-xs tracking-[0.2em] block">{String(idx + 1).padStart(2, '0')}</span>
+                      <div className="w-8 h-[1px] bg-primary mt-3 opacity-50"></div>
+                    </div>
+                    
+                    {/* Bottom Info */}
+                    <div className="mt-auto transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                      <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4">{service.title}</h3>
+                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                        {service.desc}
+                      </p>
+                      
+                      {/* Arrow button */}
+                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                        <ArrowRight size={16} />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          
+          <div className="mt-12 text-center relative z-10">
+             <Link to="/todos-procedimentos" className="inline-flex items-center gap-6 group">
+               <span className="font-label uppercase tracking-[0.3em] text-[10px] md:text-xs text-primary/80 group-hover:text-primary transition-colors font-bold">Ver todos os procedimentos</span>
+               <div className="flex items-center text-primary group-hover:translate-x-4 transition-transform duration-500">
+                 <div className="w-16 h-[1px] bg-primary/60 group-hover:w-24 group-hover:bg-primary transition-all duration-500"></div>
+                 <ArrowRight size={14} className="ml-[-4px]" />
+               </div>
+             </Link>
           </div>
         </div>
       </section>
