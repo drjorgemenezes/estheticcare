@@ -421,7 +421,7 @@ export default function App() {
       <section className="py-32 bg-surface-container-low px-6" id="orientacoes">
         <div className="max-w-4xl mx-auto text-center space-y-10">
           <div className="space-y-6">
-            <span className="font-label uppercase tracking-[0.3em] text-primary text-sm block">Preparação e Segurança</span>
+            <span className="font-label uppercase tracking-[0.3em] text-primary text-sm block">Irá realizar algum procedimento?</span>
             <h2 className="font-headline text-4xl md:text-5xl text-on-surface leading-tight uppercase">Principais Orientações Pré-Operatória</h2>
           </div>
           
