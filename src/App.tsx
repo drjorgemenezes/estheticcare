@@ -56,8 +56,12 @@ export default function App() {
           "px-6 md:px-12 max-w-[1920px] mx-auto",
           "grid grid-cols-2 md:grid-cols-3 items-center"
         )}>
-          <div className="flex justify-start">
-            <span className="font-brand text-2xl tracking-tight text-primary font-bold">ESTHETIC CARE</span>
+          <div className="flex justify-start items-center gap-3">
+            <img src="/logo.svg" alt="Esthetic Care Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
+            <div className="flex flex-col">
+              <span className="font-brand text-lg md:text-2xl tracking-widest text-primary font-bold leading-none">ESTHETIC CARE</span>
+              <span className="font-label text-[7px] md:text-[9px] uppercase tracking-[0.4em] text-primary/80 mt-1">Cirurgia Plástica</span>
+            </div>
           </div>
           
           <div className="hidden md:flex justify-center gap-10">
@@ -149,51 +153,61 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-5xl">
+        <div className="relative z-10 text-center px-4 max-w-5xl mt-12 md:mt-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 flex justify-center"
+            className="mb-6 flex justify-center"
           >
-            <img src="/logo.svg" alt="Esthetic Care Logo" className="w-24 h-24 object-contain" />
+            <span className="font-label text-[10px] md:text-xs uppercase tracking-[0.5em] md:tracking-[0.8em] text-on-surface-variant font-medium">
+              EXCELÊNCIA QUE REALÇA
+            </span>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-headline text-5xl md:text-8xl mb-6 tracking-tight gold-gradient-text leading-tight"
+            className="font-headline text-5xl md:text-[5.5rem] tracking-tight leading-tight flex flex-col items-center gap-1 mb-8"
           >
-            Cirurgia Plástica <br />& Cosmiatria
+            <span className="text-on-surface font-normal">Cirurgia Plástica</span>
+            <span className="italic font-normal gold-gradient-text">& Cosmiatria</span>
           </motion.h1>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="w-3/4 max-w-lg h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent mx-auto mb-8"
+          />
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-body text-xl md:text-2xl text-on-surface-variant font-light tracking-wide mb-12 max-w-2xl mx-auto"
+            className="font-label text-xs md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-on-surface-variant font-medium mb-16 max-w-2xl mx-auto"
           >
-            Centro Avançado de Estética Facial e Corporal.
+            CENTRO AVANÇADO DE ESTÉTICA FACIAL E CORPORAL.
           </motion.p>
           
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col md:flex-row gap-6 justify-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <a 
               href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="gold-shimmer-btn text-on-primary px-10 py-5 font-label uppercase tracking-widest font-bold text-center"
+              className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
             >
               Agendar Consulta
             </a>
             <a 
               href="#equipe"
-              className="border border-outline-variant/30 text-primary px-10 py-5 font-label uppercase tracking-widest font-bold hover:bg-primary/5 transition-colors text-center"
+              className="border border-primary/40 text-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold hover:bg-primary/5 hover:border-primary/80 transition-all duration-300 w-full sm:w-auto text-center"
             >
               Conheça Nossa Clínica
             </a>
