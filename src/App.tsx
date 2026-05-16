@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -50,10 +51,20 @@ const PROCEDIMENTOS = [
   { title: 'Ginecomastia', desc: 'Correção do aumento das mamas em homens, restaurando o contorno torácico.', category: 'MAMAS' as ProcedureCategory, img: '/ginecomastia.png' },
 ];
 
+const PORTFOLIO_CASES = [
+  { id: 1, before: "/Comparativo/1 - antes.jpeg", after: "/Comparativo/1 - depois.jpeg" },
+  { id: 2, before: "/Comparativo/2 - antes.jpeg", after: "/Comparativo/2 - depois.jpeg" },
+  { id: 3, before: "/Comparativo/3 - antes.jpeg", after: "/Comparativo/3 - depois.jpeg" },
+  { id: 4, before: "/Comparativo/4 - antes.jpeg", after: "/Comparativo/4 - depois.jpeg" },
+  { id: 5, before: "/Comparativo/5 - antes.jpeg", after: "/Comparativo/5 - depois.jpeg" },
+  { id: 6, before: "/Comparativo/6 - antes.jpeg", after: "/Comparativo/6 - depois.jpeg" },
+];
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<ProcedureCategory>('FACE');
+  const [activePortfolioIndex, setActivePortfolioIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
@@ -507,50 +518,70 @@ export default function App() {
         </div>
       </section>
 
-      {/* 
-      {/* Transformações (Temporariamente Oculto) */}
-      {/* <section className="py-32 bg-surface-container-lowest" id="experiência">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="relative group cursor-pointer overflow-hidden">
-              <div className="flex">
-                <div className="w-1/2 overflow-hidden border-r-2 border-primary/50 relative">
-                  <span className="absolute top-4 left-4 bg-black/60 px-4 py-1 text-[10px] uppercase tracking-widest font-bold z-10">Antes</span>
-                  <img 
-                    className="h-[600px] w-full object-cover" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6f0lLU1-o4F4uL2vCWQJMCR_JmMfF15MUfReZZpDAEKegWsTRkA_iafWe8ziQawFwog4naftEcGXs1Ilqlyj_n_3gu7TbxlIDY4dB6AEncTC76guAPgYI_0CsdkUgm1jaQJbT231F3PshA6h2xT8jwGLw_rpM9yBxGxpsjCMccZdxgTZ1MyvIm2Z6gsIq1JWC-Z0-R2nceD0RYRPdNaKzTXr77R66lAx4yszaGPc9EyRYkxUV3mOr5ECGgXS---2ePLjUSAjwA3E"
-                    alt="Before treatment"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="w-1/2 overflow-hidden relative">
-                  <span className="absolute top-4 right-4 bg-primary/80 text-on-primary px-4 py-1 text-[10px] uppercase tracking-widest font-bold z-10">Depois</span>
-                  <img 
-                    className="h-[600px] w-full object-cover scale-105 saturate-110" 
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXdkRwaRDTZf8HIuK_BymwL_LiuWWvYgMVKYTfuMNP9ohQXtfjC2sCYPD323tyvssE5Spw2F4C1d7tl-mdselM4WxsQ6ntKE_562D0FdJTMlKDNPLFsT2c7Wtr3ZICefN61_dG9P60Nr_55E1cV5qo0r40P0UoYgSnTvGNoDla1f9278icSbItkvvl-SF7uJCiUu-lTUZpE7fyd38Ya0TP06RRZ6SJbNKC2t4gLPvPGlchRqxXbzjFUutownDaotB0HtQJR6G5b_s"
-                    alt="After treatment"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </div>
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-10 h-10 bg-primary rounded-full flex items-center justify-center top-1/2 -mt-5 shadow-xl">
-                <ArrowRight className="text-on-primary rotate-180" size={16} />
-                <ArrowRight className="text-on-primary" size={16} />
-              </div>
+      {/* Portfólio de Resultados */}
+      <section className="py-32 bg-[#0a0a0a] relative overflow-hidden" id="experiencia">
+        {/* Glow Effects */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-[#0a0a0a]/0 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-primary/5 via-[#0a0a0a]/0 to-transparent pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            
+            {/* Slider Column */}
+            <div className="lg:col-span-7">
+              <BeforeAfterSlider 
+                beforeImage={PORTFOLIO_CASES[activePortfolioIndex].before} 
+                afterImage={PORTFOLIO_CASES[activePortfolioIndex].after} 
+              />
             </div>
             
-            <div className="space-y-8">
-              <span className="font-label uppercase tracking-[0.3em] text-primary text-sm block">Transformações</span>
-              <h2 className="font-headline text-4xl md:text-6xl text-on-surface">Resultados que Falam por Si</h2>
-              <p className="text-on-surface-variant text-lg font-light">Explore nossa galeria de resultados. Cada transformação é fruto de um planejamento minucioso e respeito à anatomia individual de cada paciente.</p>
-              <p className="font-label italic text-primary/60 text-sm">* Resultados individuais podem variar. Consulte um especialista para uma avaliação personalizada.</p>
-              <button className="border border-primary text-primary px-10 py-5 font-label uppercase tracking-widest font-bold hover:bg-primary hover:text-on-primary transition-all">
-                Ver Galeria Completa
-              </button>
+            {/* Text & Controls Column */}
+            <div className="lg:col-span-5 space-y-8">
+              <span className="font-label uppercase tracking-[0.3em] text-primary text-sm block">Transformações Reais</span>
+              <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-[#f5f5f5] leading-tight">Resultados que <br/><span className="text-primary italic">Inspiram</span></h2>
+              <p className="text-[#a0a0a0] text-lg font-light leading-relaxed">
+                Explore nossa galeria de resultados. Cada transformação é fruto de um planejamento minucioso e respeito à anatomia individual de cada paciente. Deslize para ver o antes e depois.
+              </p>
+              
+              {/* Thumbnails / Case Selector */}
+              <div className="pt-8 border-t border-primary/20">
+                <span className="font-label uppercase tracking-widest text-xs text-primary/80 block mb-6">Navegue pelos casos</span>
+                <div className="grid grid-cols-3 gap-4 sm:flex sm:flex-wrap">
+                  {PORTFOLIO_CASES.map((caso, index) => (
+                    <button
+                      key={caso.id}
+                      onClick={() => setActivePortfolioIndex(index)}
+                      className={`relative w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 ${
+                        activePortfolioIndex === index 
+                          ? 'border-2 border-primary scale-110 shadow-[0_0_15px_rgba(189,147,84,0.3)]' 
+                          : 'border border-primary/20 opacity-60 hover:opacity-100 hover:border-primary/50 grayscale'
+                      }`}
+                    >
+                      <img src={caso.after} alt={`Caso ${caso.id}`} className="w-full h-full object-cover" />
+                      {activePortfolioIndex === index && (
+                        <div className="absolute inset-0 bg-primary/20"></div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-8 space-y-4">
+                <p className="font-label italic text-primary/60 text-xs tracking-wide">* Resultados individuais podem variar. Consulte o médico especialista.</p>
+                <a 
+                  href="https://api.whatsapp.com/send/?phone=5531995740440&text=Olá, me inspirei nos resultados e gostaria de agendar uma avaliação."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="gold-shimmer-btn text-on-primary px-8 py-4 font-label uppercase tracking-widest font-bold inline-block text-xs"
+                >
+                  Agendar Minha Avaliação
+                </a>
+              </div>
             </div>
+
           </div>
         </div>
-      </section> */}
+      </section>
 
 
       {/* Contact */}
