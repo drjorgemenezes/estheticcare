@@ -370,30 +370,30 @@ export default function App() {
                   <img 
                     src={service.img} 
                     alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    className="absolute inset-0 w-full h-full object-cover grayscale-[50%] sepia-[30%] opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:sepia-0 transition-all duration-700" 
                   />
                   
                   {/* Dark Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent opacity-90"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent opacity-100"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/40 to-transparent opacity-80"></div>
                   
                   {/* Content */}
                   <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
                     {/* Top Number */}
                     <div className="mb-auto">
-                      <span className="font-label text-primary text-xs tracking-[0.2em] block">{String(idx + 1).padStart(2, '0')}</span>
-                      <div className="w-8 h-[1px] bg-primary mt-3 opacity-50"></div>
+                      <span className="font-label text-primary text-xs tracking-[0.2em] block mb-2">{String(idx + 1).padStart(2, '0')}</span>
+                      <div className="w-6 h-[1px] bg-primary opacity-60"></div>
                     </div>
                     
                     {/* Bottom Info */}
-                    <div className="mt-auto transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    <div className="mt-auto">
                       <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4">{service.title}</h3>
-                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
+                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8">
                         {service.desc}
                       </p>
                       
                       {/* Arrow button */}
-                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-colors">
                         <ArrowRight size={16} />
                       </div>
                     </div>
