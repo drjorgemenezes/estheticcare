@@ -248,47 +248,7 @@ export default function Procedimento() {
           </div>
         </section>
 
-        {/* Results Gallery (Only for Surgeries or if images available) */}
-        {!current.isCosmiatria && (
-          <section className="py-24 px-6 bg-surface overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-              <div className="mb-16">
-                <h2 className="font-headline text-3xl md:text-4xl text-on-surface">Compromisso com o Resultado</h2>
-                <p className="text-on-surface-variant font-light mt-4">Cada transformação é planejada respeitando a biologia individual.</p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="group relative overflow-hidden bg-surface-container-low">
-                  <div className="grid grid-cols-2 gap-px">
-                     <div className="relative">
-                       <span className="absolute top-4 left-4 z-10 text-[9px] uppercase tracking-[0.2em] font-bold text-white/40">Antes</span>
-                       <img className="aspect-square object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100" alt="before" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSwic_O-woioCjnhZrFTGwL9bcZI4oXvO0VZx-VAVkA-3dz_pIA-uA_qjNDogCRYPH5jGxYo-sDn0BrDSJ9jEUgaZvTEFutnHAowqe2QOrJdxVG11P4LOCsoZiXz8Vxh0Gp-Iv1y9YHl2ri1D3O43tqH1_TlELziBFZzghrGvS2WmTM8VJU0x2E1Aw60s-Qs8JNrNGzNgvmAoujmH7oHYUY0DiOw0Ir4EtB8cOLkx4U4ouykNhjA3ihWRtMbpAg9YvCq7z0EU8Ya4" />
-                     </div>
-                     <div className="relative">
-                       <span className="absolute top-4 right-4 z-10 text-[9px] uppercase tracking-[0.2em] font-bold text-primary">Depois</span>
-                       <img className="aspect-square object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100" alt="after" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2BcSPtquzLawwSWLVwAQjBMu3E9b219nPzgyeII9PpQcmqtQ0PW0mX9P3OBfisFVKI8KG_ILI1r5_v1X-BrZGyz1z8K9NfDO2ykRmW-g22eOeikPAo0OO8CuRRa021OgwHIHKNrq19nyB_dSL81aejVNm53M1GLGVAX8RDC1HC4CqYJ4_upgSsVCpRB8VOOinW5gGadON6uZM9sYJzNZH3Bt50LnIsjOjJTN6wYcHP8krkQCCSEEG4ULvNP2rwbUB2phLJSzZTmI" />
-                     </div>
-                  </div>
-                </div>
-                <div className="group relative overflow-hidden bg-surface-container-low">
-                  <div className="grid grid-cols-2 gap-px">
-                     <div className="relative">
-                       <span className="absolute top-4 left-4 z-10 text-[9px] uppercase tracking-[0.2em] font-bold text-white/40">Antes</span>
-                       <img className="aspect-square object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100" alt="side before" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_OLx8rZzrBpN1ZGJcREengtYK-q5hyYW9N504j6l2k29x17IsTtMF9s_fXiVOJhNQJ-Xdk4nQr7Ey3eqSfqWCiqXr8mP9cb7T0MmecA5riXQXf32R_oovcy8_GW-AVjKYOZ7-13Go8Dzti6wL880dm4u-2z1rrTxll6IGVT-DF-Hujd2QwBd-Xr4faS4Ge6mlZRzngvx_eSxKvMf3efEGAe_javXuG7loByd0oAWW1Bss1iE7JEJf9SNgegxpClVj0-wGUnrTses" />
-                     </div>
-                     <div className="relative">
-                       <span className="absolute top-4 right-4 z-10 text-[9px] uppercase tracking-[0.2em] font-bold text-primary">Depois</span>
-                       <img className="aspect-square object-cover grayscale brightness-75 transition-all duration-700 group-hover:grayscale-0 group-hover:brightness-100" alt="side after" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0C4TVKWlhaKrdKtt0RnFTaSoJh15ynIo_9bhWMYtPmbzgpm3SQt7roJy4QcxZMMBKFAvjgT4zvyqjcbXP_VezltKEZ-_EErHY7VQoPix1g8GS165vWzpi9biTaAYQ8qK5raCiDTJ6O2XIs3VP_uvfL-d3Qpm-igb6gd48hiWuFRmXFiuxJaeYE1V7ZjBKXijx-C-Fy4UoRG16b7IRxINbTSzMPxkDYEklxULza-IHcb-WC72z2O5lpRspnCwMRDlMxw69Cfdwce0" />
-                     </div>
-                  </div>
-                </div>
-              </div>
-              <p className="text-[10px] text-on-surface-variant/50 mt-8 italic uppercase tracking-widest text-center">
-                *Imagens ilustrativas. Os resultados dependem da resposta orgânica de cada paciente.
-              </p>
-            </div>
-          </section>
-        )}
+
 
         {/* FAQ Section */}
         {current.faqs && current.faqs.length > 0 && (

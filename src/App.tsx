@@ -52,11 +52,16 @@ export default function App() {
         "fixed top-0 w-full z-[100] transition-all duration-500",
         isScrolled ? "bg-surface/80 glass-nav py-4 shadow-2xl" : "bg-transparent py-6"
       )}>
-        <div className="flex justify-between items-center px-6 md:px-12 max-w-[1920px] mx-auto">
-          <span className="font-brand text-2xl tracking-tight text-primary font-bold">ESTHETIC CARE</span>
+        <div className={cn(
+          "px-6 md:px-12 max-w-[1920px] mx-auto",
+          "grid grid-cols-2 md:grid-cols-3 items-center"
+        )}>
+          <div className="flex justify-start">
+            <span className="font-brand text-2xl tracking-tight text-primary font-bold">ESTHETIC CARE</span>
+          </div>
           
-          <div className="hidden md:flex gap-10">
-            {['Equipe', 'Procedimentos', 'Cosmiatria', 'Orientações', 'Contato'].map((item) => (
+          <div className="hidden md:flex justify-center gap-10">
+            {['Equipe', 'Procedimentos', 'Cosmiatria', 'Contato'].map((item) => (
               <a 
                 key={item}
                 href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
@@ -67,7 +72,13 @@ export default function App() {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-end gap-4">
+            <a 
+              href="#orientacoes"
+              className="border border-primary text-primary px-6 py-2.5 rounded-none font-label text-[10px] uppercase tracking-widest font-bold hover:bg-primary hover:text-on-primary transition-all duration-300 hidden sm:block text-center"
+            >
+              Orientações
+            </a>
             <a 
               href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
               target="_blank"
@@ -77,7 +88,7 @@ export default function App() {
               Agendar Consulta
             </a>
             <button 
-              className="md:hidden text-primary"
+              className="md:hidden text-primary ml-auto"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,7 +107,7 @@ export default function App() {
             className="fixed inset-0 z-[90] bg-surface pt-24 px-6 md:hidden"
           >
             <div className="flex flex-col gap-8 text-center">
-              {['Equipe', 'Procedimentos', 'Cosmiatria', 'Orientações', 'Contato'].map((item) => (
+              {['Equipe', 'Procedimentos', 'Cosmiatria', 'Contato'].map((item) => (
                 <a 
                   key={item}
                   href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
@@ -106,6 +117,13 @@ export default function App() {
                   {item}
                 </a>
               ))}
+              <a 
+                href="#orientacoes"
+                onClick={() => setMobileMenuOpen(false)}
+                className="border border-primary text-primary py-4 font-label uppercase tracking-widest font-bold text-center"
+              >
+                Orientações
+              </a>
               <a 
                 href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
                 target="_blank"
