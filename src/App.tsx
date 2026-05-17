@@ -318,6 +318,15 @@ export default function App() {
         {/* Subtle golden waves background at the bottom */}
         <div className="absolute bottom-0 left-0 w-full h-64 opacity-20 pointer-events-none" style={{ background: 'radial-gradient(ellipse at bottom, rgba(201, 168, 76, 0.4) 0%, transparent 70%)' }}></div>
         
+        {/* Logo Watermark Background */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
+          <img 
+            src="/logo.svg" 
+            alt="Esthetic Care Watermark" 
+            className="w-[85vw] max-w-[800px] h-auto opacity-[0.025] object-contain select-none pointer-events-none filter brightness-105 contrast-95"
+          />
+        </div>
+        
         <div className="max-w-[1920px] mx-auto px-6 mb-16 text-center relative z-10">
           <span className="font-label uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary text-[10px] md:text-xs mb-6 block font-medium">Excelência em cada detalhe</span>
           <h2 className="font-headline text-4xl md:text-6xl text-[#f5f5f5] mb-6">Procedimentos</h2>
@@ -418,8 +427,59 @@ export default function App() {
       </section>
 
       {/* Pre-op Orientations */}
-      <section className="py-32 bg-surface-container-low px-6" id="orientacoes">
-        <div className="max-w-4xl mx-auto text-center space-y-10">
+      <section className="py-32 bg-surface-container-low px-6 relative overflow-hidden" id="orientacoes">
+        {/* Golden Waves Background */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none opacity-35">
+          {/* Radial glow for depth */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-72 bg-[radial-gradient(ellipse_at_bottom,rgba(230,195,100,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+          
+          <svg 
+            className="absolute bottom-0 left-0 w-full h-80" 
+            viewBox="0 0 1440 288" 
+            fill="none" 
+            xmlns="http://www.w3.org/2000/svg" 
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <linearGradient id="gold-wave-grad-1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#e6c364" stopOpacity="0"/>
+                <stop offset="25%" stopColor="#e6c364" stopOpacity="0.35"/>
+                <stop offset="50%" stopColor="#f3d484" stopOpacity="0.5"/>
+                <stop offset="75%" stopColor="#c9a84c" stopOpacity="0.35"/>
+                <stop offset="100%" stopColor="#c9a84c" stopOpacity="0"/>
+              </linearGradient>
+              <linearGradient id="gold-wave-grad-2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#c9a84c" stopOpacity="0"/>
+                <stop offset="35%" stopColor="#e6c364" stopOpacity="0.25"/>
+                <stop offset="65%" stopColor="#c9a84c" stopOpacity="0.25"/>
+                <stop offset="100%" stopColor="#e6c364" stopOpacity="0"/>
+              </linearGradient>
+            </defs>
+            {/* Wave 1 */}
+            <path 
+              d="M0,180 C240,240 480,120 720,180 C960,240 1200,120 1440,180" 
+              stroke="url(#gold-wave-grad-1)" 
+              strokeWidth="1.5" 
+              fill="none" 
+            />
+            {/* Wave 2 */}
+            <path 
+              d="M0,130 C200,80 500,220 800,150 C1100,80 1300,180 1440,130" 
+              stroke="url(#gold-wave-grad-2)" 
+              strokeWidth="1" 
+              fill="none" 
+            />
+            {/* Wave 3 */}
+            <path 
+              d="M0,210 C300,160 600,260 900,180 C1200,100 1350,230 1440,210" 
+              stroke="url(#gold-wave-grad-1)" 
+              strokeWidth="0.5" 
+              fill="none" 
+            />
+          </svg>
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center space-y-10 relative z-10">
           <div className="space-y-6">
             <span className="font-label uppercase tracking-[0.3em] text-primary text-sm block">Irá realizar algum procedimento?</span>
             <h2 className="font-headline text-4xl md:text-5xl text-on-surface leading-tight uppercase">Principais Orientações Pré-Operatória</h2>
