@@ -304,7 +304,13 @@ export default function App() {
                   <h4 className="font-headline text-3xl text-primary mb-2">{doc.name}</h4>
                   <p className="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-4">{doc.role}</p>
                   <p className="text-on-surface-variant text-sm font-light mb-6">{doc.desc}</p>
-                  <span className="font-label text-primary/60 text-[10px] tracking-widest">{doc.crm}</span>
+                  <span className="font-label text-primary/60 text-[10px] tracking-widest block mb-8">{doc.crm}</span>
+                  <Link 
+                    to="/biografia" 
+                    className="gold-shimmer-btn text-on-primary px-8 py-3 font-label uppercase tracking-widest font-bold text-[10px] inline-block"
+                  >
+                    Conheça a Trajetória
+                  </Link>
                 </div>
               </motion.div>
             ))}
