@@ -113,7 +113,7 @@ export default function Biografia() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="font-label uppercase tracking-[0.3em] text-primary text-xs mb-3 block">Trajetória Profissional</span>
-            <h2 className="font-headline text-3xl md:text-5xl text-on-surface">Sua História</h2>
+            <h2 className="font-headline text-3xl md:text-5xl text-on-surface">Minha História</h2>
             <div className="w-16 h-px bg-primary mx-auto opacity-30 mt-6"></div>
           </div>
 

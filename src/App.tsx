@@ -706,6 +706,14 @@ export default function App() {
                 >
                   YouTube
                 </a>
+                <a 
+                  className="text-on-surface-variant hover:text-primary transition-colors text-sm" 
+                  href="https://web.facebook.com/estheticcare"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
               </div>
             </div>
           </div>
