@@ -534,18 +534,18 @@ export default function App() {
             {[
               { name: "Toxina Botulínica (Botox®)", id: "botox" },
               { name: "Preenchimento", id: "preenchimento" },
-              { name: "Ellansé® (Bioestimulador)", id: "ellanse" },
               { name: "Peeling químico", id: "peeling-quimico" },
+              { name: "Laser de CO² fracionado", id: "laser-de-co2-fracionado" },
+              { name: "Ellansé® (Bioestimulador)", id: "ellanse" },
+              { name: "V10 (flacidez e gordura localizada)", id: "v10" },
+              { name: "Fios de sustentação", id: "fios-de-sustentacao" },
+              { name: "Fios subcutâneos de PDO", id: "fios-de-pdo" },
+              { name: "Drenagem linfática", id: "drenagem-linfatica" },
               { name: "Enzima subcutânea", id: "enzima-subcutanea" },
               { name: "Lipo enzimática de papada", id: "lipo-enzimatica" },
-              { name: "Laser de CO² fracionado", id: "laser-de-co2-fracionado" },
               { name: "PRP (Plasma)", id: "prp" },
-              { name: "V10", id: "v10" },
               { name: "Microagulhamento", id: "microagulhamento" },
-              { name: "Skinbooster", id: "skinbooster" },
-              { name: "Drenagem linfática", id: "drenagem-linfatica" },
-              { name: "Fios de sustentação", id: "fios-de-sustentacao" },
-              { name: "Fios subcutâneos de PDO", id: "fios-de-pdo" }
+              { name: "Skinbooster (hidratante subcutâneo)", id: "skinbooster" }
             ].map((item, idx) => (
               <Link
                 key={item.id}
