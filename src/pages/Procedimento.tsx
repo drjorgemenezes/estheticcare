@@ -267,6 +267,17 @@ export default function Procedimento() {
           </section>
         )}
 
+        {/* Observation for Cosmiatria */}
+        {current.isCosmiatria && (
+          <section className="py-12 px-6 bg-surface">
+            <div className="max-w-4xl mx-auto border-l-2 border-primary pl-6 py-2">
+              <p className="text-on-surface-variant text-lg font-light leading-relaxed">
+                <span className="font-semibold text-primary/80">Afastamento / Tempo de repouso:</span> Não há <span className="italic">downtiming</span> — ou seja, são procedimentos em que a paciente pode voltar à atividade normal logo depois da realização ou no prazo máximo de 24 horas.
+              </p>
+            </div>
+          </section>
+        )}
+
         {/* FAQ Section */}
         {current.faqs && current.faqs.length > 0 && (
           <section className="py-24 bg-surface-container-low px-6">

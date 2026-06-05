@@ -532,7 +532,7 @@ export default function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Botox® (Toxina Botulínica)", id: "botox" },
+              { name: "Toxina Botulínica (Botox®)", id: "botox" },
               { name: "Preenchimento", id: "preenchimento" },
               { name: "Ellansé® (Bioestimulador)", id: "ellanse" },
               { name: "Peeling químico", id: "peeling-quimico" },
