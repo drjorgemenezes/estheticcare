@@ -256,7 +256,16 @@ export default function Procedimento() {
           </div>
         </section>
 
-
+        {/* Observation for Surgeries */}
+        {!current.isCosmiatria && (
+          <section className="py-12 px-6 bg-surface">
+            <div className="max-w-4xl mx-auto border-l-2 border-primary pl-6 py-2">
+              <p className="text-on-surface-variant text-lg font-light leading-relaxed">
+                <span className="font-semibold text-primary/80">Observação:</span> As cirurgias geralmente são feitas na quinta ou na sexta-feira, para que a paciente possa aproveitar o descanso nos finais de semana, e voltar às atividades parciais já na segunda-feira.
+              </p>
+            </div>
+          </section>
+        )}
 
         {/* FAQ Section */}
         {current.faqs && current.faqs.length > 0 && (

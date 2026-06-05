@@ -10,6 +10,7 @@ import {
   HeartPulse
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import orientacoesText from '../../conteudos/orientacoes.txt?raw';
 
 export default function Orientacoes() {
   const navigate = useNavigate();
@@ -19,89 +20,48 @@ export default function Orientacoes() {
     window.scrollTo(0, 0);
   }, []);
 
-  const sections = [
-    {
-      title: "1. CHECKLIST – O QUE LEVAR PARA O HOSPITAL",
-      icon: <ClipboardCheck className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Guia emitida pelo Dr. Jorge Menezes (para cirurgia particular);</li>
-          <li>▪ Guia autorizada + termo de consentimento informado (para cirurgia por convênio);</li>
-          <li>▪ Laudo da avaliação pré-anestésica;</li>
-          <li>▪ Exames realizados (radiografias, ultrassonografias, tomografias, exames laboratoriais, etc.);</li>
-          <li>▪ Malha compressiva (sutiã cirúrgico, cinta, faixas, conforme orientação);</li>
-          <li>▪ Medicamentos de uso contínuo;</li>
-          <li>▪ Roupas confortáveis, preferencialmente de algodão e com abertura frontal;</li>
-          <li>▪ Presença de 1 acompanhante maior de 18 anos;</li>
-          <li>▪ (Convênios) Levar o termo de consentimento anexado à guia.</li>
-        </ul>
-      )
-    },
-    {
-      title: "2. ALIMENTAÇÃO",
-      icon: <Clock className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Realizar jejum absoluto de 8 horas antes da cirurgia (inclusive água);</li>
-          <li>▪ Para aliviar a sensação de sede, é permitido fazer bochechos com água, sem engolir;</li>
-          <li>▪ Não fumar por pelo menos 30 dias antes da cirurgia;</li>
-          <li>▪ Evitar ingestão de bebidas alcoólicas nas 24 horas que antecedem o procedimento.</li>
-        </ul>
-      )
-    },
-    {
-      title: "3. MEDICAMENTOS",
-      icon: <ShieldAlert className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Informe ao médico todos os medicamentos em uso, especialmente: AAS (ácido acetilsalicílico), aspirina, Anador, Sonrisal, Marevan, vitaminas (como Vitamina E), suplementos (como Ginkgo biloba), anticoagulantes (ex: Clexane), diuréticos, anticoncepcionais e inibidores de apetite;</li>
-          <li>▪ Alguns medicamentos poderão ser suspensos antes da cirurgia, conforme orientação médica;</li>
-          <li>▪ Não utilize nenhum medicamento sem autorização do seu médico;</li>
-          <li>▪ O período menstrual não impede a realização da cirurgia.</li>
-        </ul>
-      )
-    },
-    {
-      title: "4. ALTERAÇÕES NA SAÚDE",
-      icon: <HeartPulse className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Informe imediatamente à equipe médica caso apresente qualquer alteração antes da cirurgia, como:</li>
-          <li className="pl-4">▪ Feridas ou infecções na pele;</li>
-          <li className="pl-4">▪ Dor de garganta;</li>
-          <li className="pl-4">▪ Gripe ou sintomas respiratórios;</li>
-          <li className="pl-4">▪ Febre ou mal-estar geral.</li>
-        </ul>
-      )
-    },
-    {
-      title: "5. HIGIENE",
-      icon: <ClipboardCheck className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Tomar banho com sabonete Johnson Baby® branco, antes da cirurgia;</li>
-          <li>▪ Não depilar com ceras, cremes depilatórios ou lâminas por 07 (sete) dias antes da cirurgia;</li>
-          <li>▪ Evitar passar esmalte nas unhas, caso utilize deverá ser claro ou apenas uma base</li>
-          <li>▪ Não usar maquiagem, piercings, brincos, colares, anéis, relógios, dentre outros acessórios;</li>
-          <li>▪ Não levar objetos de valores pessoais como jóias, relógios, etc. Deixá-los em casa.</li>
-          <li>▪ Não retirar prótese dentária. Informar ao anestesista o uso.</li>
-          <li>▪ Retirar lentes de contato e cílios postiços.</li>
-        </ul>
-      )
-    },
-    {
-      title: "6. DESPESAS (CIRURGIA PARTICULAR)",
-      icon: <FileText className="text-primary" size={24} />,
-      content: (
-        <ul className="list-none space-y-2">
-          <li>▪ Eventuais alterações no tempo cirúrgico podem gerar custos adicionais relacionados a materiais, anestesia ou uso do centro cirúrgico;</li>
-          <li>▪ Caso seja necessária internação além do previsto, poderão haver cobranças extras;</li>
-          <li>▪ No momento da alta hospitalar, deverão ser realizados os acertos com a equipe médica e anestesista;</li>
-          <li>▪ Caso necessite de recibos, solicitá-los no momento do pagamento.</li>
-        </ul>
-      )
+  const parsedSections: { title: string; items: { text: string; isIndented: boolean }[] }[] = [];
+  let currentSection: any = null;
+
+  const lines = orientacoesText.split('\n');
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) continue;
+
+    if (line.startsWith('### ')) {
+      if (currentSection) parsedSections.push(currentSection);
+      currentSection = { title: line.substring(4), items: [] };
+    } else if (line.startsWith('- ')) {
+      if (currentSection) {
+        const isIndented = rawLine.startsWith('  -');
+        currentSection.items.push({ text: line.substring(2), isIndented });
+      }
     }
+  }
+  if (currentSection) parsedSections.push(currentSection);
+
+  const icons = [
+    <ClipboardCheck className="text-primary" size={24} />,
+    <Clock className="text-primary" size={24} />,
+    <ShieldAlert className="text-primary" size={24} />,
+    <HeartPulse className="text-primary" size={24} />,
+    <ClipboardCheck className="text-primary" size={24} />,
+    <FileText className="text-primary" size={24} />
   ];
+
+  const sections = parsedSections.map((sec, idx) => ({
+    title: sec.title,
+    icon: icons[idx % icons.length],
+    content: (
+      <ul className="list-none space-y-2">
+        {sec.items.map((item, i) => (
+          <li key={i} className={item.isIndented ? 'pl-4' : ''}>
+            ▪ {item.text}
+          </li>
+        ))}
+      </ul>
+    )
+  }));
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
