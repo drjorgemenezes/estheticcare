@@ -60,12 +60,115 @@ const PORTFOLIO_CASES = [
   { id: 6, before: "/Comparativo/6 - antes.jpeg", after: "/Comparativo/6 - depois.jpeg" },
 ];
 
+const HERO_SLIDES = [
+  {
+    id: 'home',
+    image: IMAGES.hero,
+    featuredImage: undefined,
+    subtitle: 'EXCELÊNCIA QUE REALÇA',
+    titleMain: 'Cirurgia Plástica',
+    titleItalic: '& Cosmiatria',
+    description: 'CENTRO AVANÇADO DE ESTÉTICA FACIAL E CORPORAL.',
+    buttons: (
+      <>
+        <a 
+          href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
+        >
+          Agendar Consulta
+        </a>
+        <a 
+          href="#equipe"
+          className="border border-primary/40 text-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold hover:bg-primary/5 hover:border-primary/80 transition-all duration-300 w-full sm:w-auto text-center"
+        >
+          Conheça Nossa Clínica
+        </a>
+      </>
+    )
+  },
+  {
+    id: 'mamoplastia',
+    image: undefined,
+    featuredImage: '/MAMOPLASTIA.png',
+    subtitle: 'PROCEDIMENTOS EM DESTAQUE',
+    titleMain: 'Mamoplastia',
+    titleItalic: '',
+    description: 'Indicado para corrigir assimetrias, restaurar a harmonia e valorizar o contorno das mamas.',
+    buttons: (
+      <Link 
+        to="/procedimento/mamoplastia"
+        className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
+      >
+        Confira Aqui
+      </Link>
+    )
+  },
+  {
+    id: 'lipoaspiracao',
+    image: undefined,
+    featuredImage: '/LIPOASPIRACAO.png',
+    subtitle: 'CONTORNO CORPORAL',
+    titleMain: 'Lipoaspiração',
+    titleItalic: '',
+    description: 'Remodelação do corpo através da remoção de gordura localizada, melhorando o contorno corporal.',
+    buttons: (
+      <Link 
+        to="/procedimento/lipoaspiracao"
+        className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
+      >
+        Confira Aqui
+      </Link>
+    )
+  },
+  {
+    id: 'drjorge',
+    image: IMAGES.hero,
+    featuredImage: IMAGES.drJorge,
+    subtitle: 'ATENDIMENTOS',
+    titleMain: 'Dr. Jorge Menezes',
+    titleItalic: 'Cirurgião Plástico',
+    description: (
+      <div className="flex flex-col gap-3 items-center md:items-start text-[10px] md:text-xs">
+        <div className="flex items-center gap-2">
+          <MapPin size={16} className="text-primary flex-shrink-0" />
+          <span>Rua Dos Aimorés, 2480 - BH/MG</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Clock size={16} className="text-primary flex-shrink-0" />
+          <span>Segunda à Sexta: 09:00 - 18:00</span>
+        </div>
+      </div>
+    ),
+    buttons: (
+      <Link 
+        to="/biografia"
+        className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
+      >
+        Conheça a Trajetória
+      </Link>
+    )
+  }
+];
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<ProcedureCategory>('FACE');
   const [activePortfolioIndex, setActivePortfolioIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextHeroSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  const prevHeroSlide = () => setCurrentHeroSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -183,76 +286,144 @@ export default function App() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            className="w-full h-full object-cover opacity-40 scale-105" 
-            src={IMAGES.hero}
-            alt="Luxurious clinic interior"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+      <header className="relative h-screen w-full flex items-center justify-center overflow-hidden group">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentHeroSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 z-0"
+          >
+            {HERO_SLIDES[currentHeroSlide].image && (
+              <img 
+                className="w-full h-full object-cover opacity-40 scale-105" 
+                src={HERO_SLIDES[currentHeroSlide].image}
+                alt={HERO_SLIDES[currentHeroSlide].titleMain}
+                referrerPolicy="no-referrer"
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="absolute left-4 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <button 
+            onClick={prevHeroSlide}
+            className="w-14 h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all hover:scale-105"
+          >
+            <ChevronLeft size={32} />
+          </button>
+        </div>
+
+        <div className="absolute right-4 z-20 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <button 
+            onClick={nextHeroSlide}
+            className="w-14 h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all hover:scale-105"
+          >
+            <ChevronRight size={32} />
+          </button>
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-5xl mt-12 md:mt-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-6 flex justify-center"
-          >
-            <span className="font-label text-[10px] md:text-xs uppercase tracking-[0.5em] md:tracking-[0.8em] text-on-surface-variant font-medium">
-              EXCELÊNCIA QUE REALÇA
-            </span>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-headline text-5xl md:text-[5.5rem] tracking-tight leading-tight flex flex-col items-center gap-1 mb-8"
-          >
-            <span className="text-on-surface font-normal">Cirurgia Plástica</span>
-            <span className="italic font-normal gold-gradient-text">& Cosmiatria</span>
-          </motion.h1>
+        <div className={cn(
+          "relative z-10 px-6 mt-16 md:mt-24 w-full transition-all duration-500",
+          HERO_SLIDES[currentHeroSlide].featuredImage ? "max-w-6xl text-left" : "max-w-5xl text-center"
+        )}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentHeroSlide}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              {HERO_SLIDES[currentHeroSlide].featuredImage ? (
+                <div className="flex flex-col md:flex-row items-center justify-between gap-10 lg:gap-16 w-full">
+                  {/* Coluna de Texto */}
+                  <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1 max-w-xl order-2 md:order-1">
+                    <div className="mb-4">
+                      <span className="font-label text-[10px] md:text-xs uppercase tracking-[0.5em] md:tracking-[0.8em] text-on-surface-variant font-medium">
+                        {HERO_SLIDES[currentHeroSlide].subtitle}
+                      </span>
+                    </div>
+                    
+                    <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl tracking-tight leading-tight flex flex-col items-center md:items-start gap-1 mb-6">
+                      <span className="text-on-surface font-normal">{HERO_SLIDES[currentHeroSlide].titleMain}</span>
+                      {HERO_SLIDES[currentHeroSlide].titleItalic && (
+                        <span className="italic font-normal gold-gradient-text">{HERO_SLIDES[currentHeroSlide].titleItalic}</span>
+                      )}
+                    </h1>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-3/4 max-w-lg h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent mx-auto mb-8"
-          />
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-label text-xs md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-on-surface-variant font-medium mb-16 max-w-2xl mx-auto"
-          >
-            CENTRO AVANÇADO DE ESTÉTICA FACIAL E CORPORAL.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-          >
-            <a 
-              href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
-            >
-              Agendar Consulta
-            </a>
-            <a 
-              href="#equipe"
-              className="border border-primary/40 text-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold hover:bg-primary/5 hover:border-primary/80 transition-all duration-300 w-full sm:w-auto text-center"
-            >
-              Conheça Nossa Clínica
-            </a>
-          </motion.div>
+                    <div className="w-2/3 md:w-1/2 h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent md:from-primary/60 md:to-transparent mb-8" />
+                    
+                    <div className="font-label text-xs md:text-[13px] uppercase tracking-[0.15em] text-on-surface-variant font-medium mb-10">
+                      {HERO_SLIDES[currentHeroSlide].description}
+                    </div>
+                    
+                    <div className="flex flex-col sm:flex-row gap-4 w-full justify-center md:justify-start items-center">
+                      {HERO_SLIDES[currentHeroSlide].buttons}
+                    </div>
+                  </div>
+
+                  {/* Coluna da Imagem com Moldura Premium */}
+                  <div className="w-52 h-64 sm:w-60 sm:h-76 md:w-[320px] md:h-[420px] relative flex-shrink-0 mt-6 md:mt-0 select-none order-1 md:order-2">
+                    {/* Elementos decorativos da moldura */}
+                    <div className="absolute inset-0 border border-primary/40 -rotate-3 rounded-lg transition-transform duration-500"></div>
+                    <div className="absolute inset-0 border border-primary/20 rotate-3 rounded-lg transition-transform duration-500"></div>
+                    
+                    {/* Imagem emoldurada */}
+                    <img 
+                      src={HERO_SLIDES[currentHeroSlide].featuredImage} 
+                      alt={HERO_SLIDES[currentHeroSlide].titleMain} 
+                      className="w-full h-full object-cover object-top shadow-2xl rounded-lg relative z-10 border border-primary/10"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+              ) : (
+                /* Layout padrão para os demais slides */
+                <>
+                  <div className="mb-6 flex justify-center">
+                    <span className="font-label text-[10px] md:text-xs uppercase tracking-[0.5em] md:tracking-[0.8em] text-on-surface-variant font-medium">
+                      {HERO_SLIDES[currentHeroSlide].subtitle}
+                    </span>
+                  </div>
+                  
+                  <h1 className="font-headline text-5xl md:text-[5.5rem] tracking-tight leading-tight flex flex-col items-center gap-1 mb-8">
+                    <span className="text-on-surface font-normal">{HERO_SLIDES[currentHeroSlide].titleMain}</span>
+                    {HERO_SLIDES[currentHeroSlide].titleItalic && (
+                      <span className="italic font-normal gold-gradient-text">{HERO_SLIDES[currentHeroSlide].titleItalic}</span>
+                    )}
+                  </h1>
+
+                  <div className="w-3/4 max-w-lg h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent mx-auto mb-8" />
+                  
+                  <div className="font-label text-xs md:text-[13px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-on-surface-variant font-medium mb-16 max-w-2xl mx-auto">
+                    {HERO_SLIDES[currentHeroSlide].description}
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    {HERO_SLIDES[currentHeroSlide].buttons}
+                  </div>
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Indicators */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {HERO_SLIDES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentHeroSlide(idx)}
+              className={cn(
+                "w-2.5 h-2.5 rounded-full transition-all duration-300",
+                currentHeroSlide === idx ? "bg-primary scale-125" : "bg-primary/30 hover:bg-primary/60"
+              )}
+            />
+          ))}
         </div>
         
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
