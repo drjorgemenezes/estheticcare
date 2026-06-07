@@ -120,23 +120,8 @@ const HERO_SLIDES = [
   }
 ];
 
-export default function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState<ProcedureCategory>('FACE');
-  const [activePortfolioIndex, setActivePortfolioIndex] = useState(0);
+const ProcedureCarousel = ({ category, title }: { category: ProcedureCategory, title: string }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const nextHeroSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-  const prevHeroSlide = () => setCurrentHeroSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -148,6 +133,102 @@ export default function App() {
     }
   };
 
+  const filtered = PROCEDIMENTOS.filter(p => p.category === category);
+
+  return (
+    <div className="mb-24 last:mb-0 w-full">
+      <div className="max-w-[1920px] mx-auto px-6 mb-8 text-left md:text-center">
+        <h3 className="font-headline text-3xl md:text-4xl text-primary border-b border-primary/20 pb-4 inline-block">
+          {title}
+        </h3>
+      </div>
+      
+      {/* Carousel Wrapper */}
+      <div className="relative group max-w-[1920px] mx-auto px-0 md:px-6">
+        {/* Navigation Arrows */}
+        <button 
+          onClick={() => scrollCarousel('left')}
+          className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-0 group-hover:opacity-90 hover:opacity-100 hover:scale-105 hidden md:flex"
+        >
+          <ArrowLeft size={24} />
+        </button>
+        <button 
+          onClick={() => scrollCarousel('right')}
+          className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-0 group-hover:opacity-90 hover:opacity-100 hover:scale-105 hidden md:flex"
+        >
+          <ArrowRight size={24} />
+        </button>
+
+        {/* Carousel Container */}
+        <div 
+          ref={carouselRef}
+          className={cn(
+            "flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 pt-4 px-6 md:px-4 [&::-webkit-scrollbar]:hidden",
+            filtered.length <= 3 ? "md:justify-center" : ""
+          )}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {filtered.map((service, idx) => (
+            <Link 
+              key={service.title}
+              to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
+              className="flex-none w-[85vw] sm:w-[320px] md:w-[360px] h-[480px] md:h-[500px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
+            >
+              {/* Background Image */}
+              <img 
+                src={service.img} 
+                alt={service.title} 
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+              />
+              
+              {/* Dark Overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent opacity-100"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/40 via-transparent to-transparent opacity-60"></div>
+              
+              {/* Content */}
+              <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
+                {/* Top Number */}
+                <div className="mb-auto">
+                  <span className="font-label text-primary text-xs tracking-[0.2em] block">{String(idx + 1).padStart(2, '0')}</span>
+                  <div className="w-8 h-[1px] bg-primary mt-3 opacity-50"></div>
+                </div>
+                
+                {/* Bottom Info */}
+                <div className="mt-auto">
+                  <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4 tracking-tight">{service.title}</h3>
+                  <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 max-w-[90%]">
+                    {service.desc}
+                  </p>
+                  
+                  {/* Arrow button */}
+                  <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-all duration-300">
+                    <ArrowRight size={16} />
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activePortfolioIndex, setActivePortfolioIndex] = useState(0);
+  const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextHeroSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  const prevHeroSlide = () => setCurrentHeroSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
@@ -380,94 +461,10 @@ export default function App() {
           </p>
         </div>
         
-        <div className="max-w-[1920px] mx-auto px-6 relative z-10">
-          {/* Category Filter */}
-          <div className="flex justify-center items-center gap-6 md:gap-12 mb-16">
-            {(['FACE', 'CORPO', 'MAMAS'] as ProcedureCategory[]).map((category, idx, arr) => (
-              <div key={category} className="flex items-center gap-6 md:gap-12">
-                <button
-                  onClick={() => setActiveCategory(category)}
-                  className={cn(
-                    "font-label uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs transition-all duration-300 pb-2 border-b-2",
-                    activeCategory === category 
-                      ? "text-primary border-primary" 
-                      : "text-[#666666] border-transparent hover:text-[#aaaaaa]"
-                  )}
-                >
-                  {category}
-                </button>
-                {idx < arr.length - 1 && (
-                  <span className="text-[#333333]">|</span>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Carousel Wrapper */}
-          <div className="relative group">
-            {/* Navigation Arrows */}
-            <button 
-              onClick={() => scrollCarousel('left')}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-90 hover:opacity-100 hover:scale-105"
-            >
-              <ArrowLeft size={24} />
-            </button>
-            <button 
-              onClick={() => scrollCarousel('right')}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0a0a0a]/80 backdrop-blur-sm border border-primary/50 shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center justify-center text-primary hover:bg-primary hover:text-on-primary transition-all opacity-90 hover:opacity-100 hover:scale-105"
-            >
-              <ArrowRight size={24} />
-            </button>
-
-            {/* Carousel Container */}
-            <div 
-              ref={carouselRef}
-              className="flex overflow-x-auto snap-x snap-mandatory gap-6 md:gap-8 pb-8 pt-4 px-4 -mx-4 [&::-webkit-scrollbar]:hidden"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {PROCEDIMENTOS.filter(p => p.category === activeCategory).map((service, idx) => (
-                <Link 
-                  key={service.title}
-                  to={`/procedimento/${service.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, "-")}`}
-                  className="flex-none w-[85vw] sm:w-[320px] md:w-[360px] h-[480px] md:h-[500px] snap-center block relative rounded-2xl overflow-hidden group cursor-pointer border border-white/5"
-                >
-                  {/* Background Image */}
-                  <img 
-                    src={service.img} 
-                    alt={service.title} 
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
-                  />
-                  
-                  {/* Dark Overlays */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent opacity-100"></div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/40 via-transparent to-transparent opacity-60"></div>
-                  
-                  {/* Content */}
-                  <div className="absolute inset-0 p-8 md:p-10 flex flex-col">
-                    {/* Top Number */}
-                    <div className="mb-auto">
-                      <span className="font-label text-primary text-xs tracking-[0.2em] block">{String(idx + 1).padStart(2, '0')}</span>
-                      <div className="w-8 h-[1px] bg-primary mt-3 opacity-50"></div>
-                    </div>
-                    
-                    {/* Bottom Info */}
-                    <div className="mt-auto">
-                      <h3 className="font-headline text-3xl md:text-4xl text-[#f5f5f5] mb-4 tracking-tight">{service.title}</h3>
-                      <p className="text-[#a0a0a0] font-light text-sm leading-relaxed mb-8 max-w-[90%]">
-                        {service.desc}
-                      </p>
-                      
-                      {/* Arrow button */}
-                      <div className="w-10 h-10 rounded-full border border-primary/40 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary group-hover:border-primary transition-all duration-300">
-                        <ArrowRight size={16} />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-          
+        <div className="w-full relative z-10 flex flex-col">
+          <ProcedureCarousel category="FACE" title="Cirurgias de Face" />
+          <ProcedureCarousel category="CORPO" title="Cirurgias de Corpo" />
+          <ProcedureCarousel category="MAMAS" title="Cirurgias de Mamas" />
         </div>
       </section>
 
