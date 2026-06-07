@@ -468,6 +468,49 @@ export default function App() {
         </div>
       </section>
 
+      {/* Cirurgias Corretivas */}
+      <section className="py-32 bg-surface-container-highest px-6 relative overflow-hidden" id="corretivas">
+        <div className="max-w-[1920px] mx-auto px-6 text-center relative z-10">
+          <span className="font-label uppercase tracking-[0.4em] md:tracking-[0.6em] text-primary text-[10px] md:text-xs mb-6 block font-medium">
+            Resgatando a Autoestima e a Qualidade de Vida
+          </span>
+          <h2 className="font-headline text-3xl md:text-5xl text-[#f5f5f5] mb-6 uppercase leading-snug">
+            Cirurgias Plásticas Corretivas <br/>
+            <span className="text-primary text-2xl md:text-4xl">Pós Grandes Perdas Ponderais</span>
+          </h2>
+          <div className="w-24 h-px bg-primary mx-auto opacity-30 my-8"></div>
+          <p className="text-[#a0a0a0] font-light max-w-3xl mx-auto text-sm md:text-base leading-relaxed mb-16">
+            Após uma jornada vitoriosa de grande perda de peso, é comum que ocorra o excesso e a flacidez de pele. Nossas cirurgias corretivas têm como principal objetivo devolver a harmonia corporal e, acima de tudo, trazer de volta a autoestima e o conforto para o paciente.
+          </p>
+
+          <div className="flex flex-col md:flex-row items-start justify-center gap-10 md:gap-8 max-w-5xl mx-auto my-16 text-on-surface-variant font-headline text-lg md:text-xl text-center">
+            <div className="flex flex-col items-center gap-3 flex-1">
+              <div className="w-2 h-2 rounded-full bg-primary/60 mb-2"></div>
+              <span>Pós-Cirurgia Bariátrica</span>
+            </div>
+            <div className="hidden md:block text-primary/30 text-3xl font-light mt-8">|</div>
+            <div className="flex flex-col items-center gap-3 flex-1">
+              <div className="w-2 h-2 rounded-full bg-primary/60 mb-2"></div>
+              <span>Pós Uso de Emagrecedores <br/><span className="text-[11px] font-label uppercase tracking-widest text-primary/70 mt-2 block">(Canetas)</span></span>
+            </div>
+            <div className="hidden md:block text-primary/30 text-3xl font-light mt-8">|</div>
+            <div className="flex flex-col items-center gap-3 flex-1">
+              <div className="w-2 h-2 rounded-full bg-primary/60 mb-2"></div>
+              <span>Pós Perda Ponderal <br/><span className="text-[11px] font-label uppercase tracking-widest text-primary/70 mt-2 block">Assistência Nutricional</span></span>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <Link 
+              to="/corretivas" 
+              className="gold-shimmer-btn text-on-primary px-12 py-5 font-label uppercase tracking-widest text-[11px] font-bold inline-block"
+            >
+              Saiba Mais
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Pre-op Orientations */}
       <section className="py-32 bg-surface-container-low px-6 relative overflow-hidden" id="orientacoes">
         {/* Golden Waves Background */}
