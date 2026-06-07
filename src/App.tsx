@@ -566,7 +566,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {[
               { name: "Toxina Botulínica (Botox®)", id: "botox" },
               { name: "Preenchimento", id: "preenchimento" },
@@ -586,7 +586,7 @@ export default function App() {
               <Link
                 key={item.id}
                 to={`/procedimento/${item.id}`}
-                className="block"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] block"
               >
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
