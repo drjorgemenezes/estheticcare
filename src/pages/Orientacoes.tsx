@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { 
   ChevronLeft, 
   ClipboardCheck, 
@@ -66,8 +67,9 @@ export default function Orientacoes() {
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
       
+      <Header />
       {/* Back Button */}
-      <div className="fixed top-0 left-0 z-50 p-8">
+      <div className="fixed top-24 left-0 z-50 p-8">
         <button 
           onClick={(e) => {
             e.preventDefault();
@@ -172,6 +174,9 @@ export default function Orientacoes() {
       {/* Footer minimal or reuse? */}
       <footer className="py-12 bg-surface-container-lowest border-t border-outline-variant/10 text-center">
         <p className="font-body text-[10px] tracking-widest text-neutral-600 uppercase">Esthetic Care | Excelência e Segurança em Cirurgia Plástica</p>
+        <p className="font-body text-[10px] tracking-widest text-neutral-600 mt-2">
+          Desenvolvido e Gerenciado por <a href="https://instagram.com/jvmarquest" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@jvmarquest</a>
+        </p>
       </footer>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 import { 
   ChevronLeft, 
   ChevronDown, 
@@ -149,8 +150,9 @@ export default function Procedimento() {
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
       
+      <Header />
       {/* Back Button */}
-      <div className="fixed top-0 left-0 z-50 p-6 md:p-8">
+      <div className="fixed top-24 left-0 z-50 p-6 md:p-8">
         <button 
           onClick={(e) => {
             e.preventDefault();
@@ -167,30 +169,7 @@ export default function Procedimento() {
         </button>
       </div>
 
-      <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20">
-          <div className="absolute inset-0 z-0">
-            <img 
-              className="w-full h-full object-cover opacity-30" 
-              alt="background" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkdYaAeV2myOvJF35fwOe3uWxEz57cHeVvmMiup5vnPIWd1Fg8qp_6gStjJEYSZ1ELI-ta9S-ZzxF0jyCTYgtMhjPfk9_2nlDcM_fReXphXPszmraA2H0SCSDcwP8Sc7sOZqumc0TYExTGtF_HxJIj7UQlUKOnFUCorH7q5216I68vZC5w1ZHtnNkQpLoDJzNpoxqMJm9gV2yd7iIATzlslLxc0nGdys7jhjgN0ekMndsUwlcFkae7cIPojurOnYmAzIPOLRu36ZM"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-surface via-transparent to-surface"></div>
-          </div>
-          <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <span className="font-label uppercase tracking-[0.3em] text-primary mb-6 block text-sm">
-              {current.isCosmiatria ? 'Cosmiatria & Rejuvenescimento' : 'Cirurgia Plástica de Excelência'}
-            </span>
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight gold-gradient-text mb-8 leading-tight">
-              {current.title}
-            </h1>
-            <p className="font-headline italic text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-              {current.hook}
-            </p>
-          </div>
-        </section>
-
+      <main className="pt-24">
         {/* Overview Section */}
         <section className="py-24 px-6 md:px-12 bg-surface-container-low">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
@@ -213,6 +192,18 @@ export default function Procedimento() {
             </div>
             
             <div className="space-y-12">
+              <div className="space-y-4 mb-12">
+                <span className="font-label uppercase tracking-[0.3em] text-primary mb-2 block text-xs">
+                  {current.isCosmiatria ? 'Cosmiatria & Rejuvenescimento' : 'Cirurgia Plástica de Excelência'}
+                </span>
+                <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight gold-gradient-text leading-tight">
+                  {current.title}
+                </h1>
+                <p className="font-headline italic text-lg md:text-xl text-on-surface-variant leading-relaxed">
+                  {current.hook}
+                </p>
+              </div>
+
               <div className="space-y-8">
                 <h2 className="font-headline text-3xl md:text-4xl text-on-surface">Como Funciona?</h2>
                 <div className="text-lg text-on-surface-variant leading-relaxed font-light space-y-6">
@@ -357,6 +348,9 @@ export default function Procedimento() {
         <div className="max-w-7xl mx-auto text-center space-y-4">
            <span className="font-brand text-2xl tracking-tight text-primary font-bold">ESTHETIC CARE</span>
            <p className="font-body text-[10px] tracking-widest text-neutral-500 uppercase">© 2026 Esthetic Care | Dr. Jorge Menezes CRM/MG 19854</p>
+           <p className="font-body text-[10px] tracking-widest text-neutral-600 mt-2">
+             Desenvolvido e Gerenciado por <a href="https://instagram.com/jvmarquest" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@jvmarquest</a>
+           </p>
         </div>
       </footer>
     </div>

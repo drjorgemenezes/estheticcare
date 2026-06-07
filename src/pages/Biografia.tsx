@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
+import Header from '../components/Header';
 import { 
   ArrowLeft,
   Award,
@@ -41,20 +42,17 @@ export default function Biografia() {
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen pb-20">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-[100] bg-surface/80 glass-nav py-4 shadow-xl border-b border-white/5">
-        <div className="px-6 md:px-12 max-w-[1920px] mx-auto flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-3 text-on-surface hover:text-primary transition-colors">
-            <ArrowLeft size={20} />
-            <span className="font-label text-[10px] uppercase tracking-widest font-bold">Voltar</span>
-          </Link>
-          <div className="flex justify-center items-center gap-3">
-            <img src="/logo.svg" alt="Esthetic Care Logo" className="w-8 h-8 object-contain" />
-            <span className="font-brand text-lg tracking-widest text-primary font-bold">ESTHETIC CARE</span>
-          </div>
-          <div className="w-[88px]"></div> {/* Spacer to center logo */}
-        </div>
-      </nav>
+      <Header />
+      {/* Back Button */}
+      <div className="fixed top-24 left-0 z-50 p-6 md:p-8">
+        <Link 
+          to="/"
+          className="group flex items-center gap-2 text-primary hover:text-primary-container transition-colors duration-300"
+        >
+          <ArrowLeft size={24} strokeWidth={1.5} />
+          <span className="font-sans text-xs font-bold uppercase tracking-[0.2em] leading-none">Voltar</span>
+        </Link>
+      </div>
 
       {/* Hero Section */}
       <header className="relative pt-32 pb-20 px-6 min-h-[70vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">

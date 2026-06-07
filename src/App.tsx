@@ -23,6 +23,7 @@ import {
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
+import Header from './components/Header';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -88,40 +89,7 @@ const HERO_SLIDES = [
       </>
     )
   },
-  {
-    id: 'mamoplastia',
-    image: undefined,
-    featuredImage: '/MAMOPLASTIA.png',
-    subtitle: 'PROCEDIMENTOS EM DESTAQUE',
-    titleMain: 'Mamoplastia',
-    titleItalic: '',
-    description: 'Indicado para corrigir assimetrias, restaurar a harmonia e valorizar o contorno das mamas.',
-    buttons: (
-      <Link 
-        to="/procedimento/mamoplastia"
-        className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
-      >
-        Confira Aqui
-      </Link>
-    )
-  },
-  {
-    id: 'lipoaspiracao',
-    image: undefined,
-    featuredImage: '/LIPOASPIRACAO.png',
-    subtitle: 'CONTORNO CORPORAL',
-    titleMain: 'Lipoaspiração',
-    titleItalic: '',
-    description: 'Remodelação do corpo através da remoção de gordura localizada, melhorando o contorno corporal.',
-    buttons: (
-      <Link 
-        to="/procedimento/lipoaspiracao"
-        className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
-      >
-        Confira Aqui
-      </Link>
-    )
-  },
+
   {
     id: 'drjorge',
     image: IMAGES.hero,
@@ -181,109 +149,9 @@ export default function App() {
   };
 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
-      {/* Navigation */}
-      <nav className={cn(
-        "fixed top-0 w-full z-[100] transition-all duration-500",
-        isScrolled ? "bg-surface/80 glass-nav py-4 shadow-2xl" : "bg-transparent py-6"
-      )}>
-        <div className={cn(
-          "px-6 md:px-12 max-w-[1920px] mx-auto",
-          "grid grid-cols-2 md:grid-cols-3 items-center"
-        )}>
-          <div className="flex justify-start items-center gap-3">
-            <img src="/logo.svg" alt="Esthetic Care Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain" />
-            <div className="flex flex-col">
-              <span className="font-brand text-lg md:text-2xl tracking-widest text-primary font-bold leading-none">ESTHETIC CARE</span>
-              <span className="font-label text-[7px] md:text-[9px] uppercase tracking-[0.4em] text-primary/80 mt-1">Cirurgia Plástica</span>
-            </div>
-          </div>
-          
-          <div className="hidden md:flex justify-center gap-10">
-            {['Equipe', 'Procedimentos', 'Cosmiatria', 'Contato'].map((item) => (
-              <a 
-                key={item}
-                href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-                className="font-label uppercase tracking-[0.15em] text-[10px] font-medium text-white/80 hover:text-primary transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex items-center justify-end gap-4">
-            <a 
-              href="#orientacoes"
-              className="border border-primary text-primary px-6 py-2.5 rounded-none font-label text-[10px] uppercase tracking-widest font-bold hover:bg-primary hover:text-on-primary transition-all duration-300 hidden sm:block text-center"
-            >
-              Orientações
-            </a>
-            <a 
-              href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="gold-shimmer-btn text-on-primary px-6 py-2.5 rounded-none font-label text-[10px] uppercase tracking-widest font-bold hover:scale-105 transition-transform duration-300 hidden sm:block text-center"
-            >
-              Agendar Consulta
-            </a>
-            <button 
-              className="md:hidden text-primary ml-auto"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-surface pt-24 px-6 md:hidden"
-          >
-            <div className="flex flex-col gap-8 text-center">
-              {['Equipe', 'Procedimentos', 'Cosmiatria', 'Contato'].map((item) => (
-                <a 
-                  key={item}
-                  href={`#${item.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-headline text-3xl text-on-surface hover:text-primary transition-colors"
-                >
-                  {item}
-                </a>
-              ))}
-              <a 
-                href="#orientacoes"
-                onClick={() => setMobileMenuOpen(false)}
-                className="border border-primary text-primary py-4 font-label uppercase tracking-widest font-bold text-center"
-              >
-                Orientações
-              </a>
-              <a 
-                href="https://api.whatsapp.com/send/?phone=5531995740440&text&type=phone_number&app_absent=0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="gold-shimmer-btn text-on-primary py-4 font-label uppercase tracking-widest font-bold text-center"
-              >
-                Agendar Consulta
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Header />
 
       {/* Hero Section */}
       <header className="relative h-screen w-full flex items-center justify-center overflow-hidden group">
@@ -916,6 +784,9 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-8 mt-24 pt-8 border-t border-outline-variant/5 text-center">
           <p className="font-body text-sm tracking-wide text-neutral-400 mb-4 italic">© 2026 Esthetic Care. Todos os direitos reservados. Responsável Técnico: Dr. Jorge Menezes CRM/MG 19854. RQE 6085.</p>
           <p className="font-body text-[10px] tracking-widest text-neutral-600 uppercase">Imagens meramente ilustrativas | Consulte seu médico</p>
+          <p className="font-body text-[10px] tracking-widest text-neutral-600 mt-6">
+            Desenvolvido e Gerenciado por <a href="https://instagram.com/jvmarquest" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@jvmarquest</a>
+          </p>
         </div>
       </footer>
 
