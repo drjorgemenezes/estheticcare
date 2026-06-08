@@ -136,9 +136,6 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <a href="/#contato" className="font-label uppercase tracking-[0.15em] text-[10px] font-medium text-white/80 hover:text-primary transition-colors">
-              Contato
-            </a>
           </div>
 
           <div className="flex items-center justify-end gap-4">
@@ -180,7 +177,6 @@ export default function Header() {
               <Link to="/biografia" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Dr. Jorge Menezes</Link>
               <a href="/#procedimentos" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Cirurgias Plásticas</a>
               <a href="/#cosmiatria" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Cosmiatria</a>
-              <a href="/#contato" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Contato</a>
               <Link 
                 to="/orientacoes"
                 onClick={() => setMobileMenuOpen(false)}
