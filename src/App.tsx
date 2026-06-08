@@ -722,7 +722,7 @@ export default function App() {
                 <Share2 size={18} />
                 <span className="font-label uppercase tracking-widest text-[10px]">Siga-nos</span>
               </div>
-              <div className="flex gap-6">
+              <div className="flex flex-wrap gap-6">
                 <a 
                   className="text-on-surface-variant hover:text-primary transition-colors text-sm" 
                   href="https://www.instagram.com/esthetic.care/"
@@ -746,6 +746,14 @@ export default function App() {
                   rel="noopener noreferrer"
                 >
                   Facebook
+                </a>
+                <a 
+                  className="text-on-surface-variant hover:text-primary transition-colors text-sm" 
+                  href="https://www.doctoralia.com.br/jorge-antonio-de-menezes/cirurgiao-plastico/belo-horizonte"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Doctoralia
                 </a>
               </div>
             </div>
