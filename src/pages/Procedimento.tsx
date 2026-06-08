@@ -8,7 +8,10 @@ import {
   Mail,
   Clock,
   Calendar,
-  CheckCircle2
+  CheckCircle2,
+  Banknote,
+  CreditCard,
+  Landmark
 } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 
@@ -296,6 +299,51 @@ export default function Procedimento() {
             </div>
           </section>
         )}
+
+        {/* Formas de Pagamento Section */}
+        <section className="py-24 px-6 bg-surface-container-lowest">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="font-label uppercase tracking-widest text-primary text-xs">Planejamento</span>
+              <h2 className="font-headline text-3xl md:text-4xl text-on-surface mt-4">Formas de Pagamento</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Pagamento à Vista */}
+              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
+                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
+                  <Banknote className="text-primary" size={24} strokeWidth={1.5} />
+                </div>
+                <h3 className="font-headline text-xl text-on-surface mb-4">À Vista</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed">
+                  Condições exclusivas para pagamentos à vista, garantindo o melhor planejamento para a realização do seu procedimento.
+                </p>
+              </div>
+
+              {/* Cartão de Crédito */}
+              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
+                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
+                  <CreditCard className="text-primary" size={24} strokeWidth={1.5} />
+                </div>
+                <h3 className="font-headline text-xl text-on-surface mb-4">Cartão de Crédito</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed">
+                  Facilidade e segurança no parcelamento através de cartões de crédito, aceitando as principais bandeiras do mercado.
+                </p>
+              </div>
+
+              {/* Financiamento */}
+              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
+                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
+                  <Landmark className="text-primary" size={24} strokeWidth={1.5} />
+                </div>
+                <h3 className="font-headline text-xl text-on-surface mb-4">Financiamento de Cirurgia</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed">
+                  Formas especiais de financiamento voltadas exclusivamente para cirurgias plásticas, viabilizando o seu sonho com flexibilidade.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Contact/CTA Section */}
         <section className="py-24 px-6 bg-surface">

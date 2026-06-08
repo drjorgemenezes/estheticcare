@@ -101,7 +101,7 @@ const HERO_SLIDES = [
       <div className="flex flex-col gap-3 items-center md:items-start text-[10px] md:text-xs">
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-primary flex-shrink-0" />
-          <span>Rua Dos Aimorés, 2480 - BH/MG</span>
+          <span>Rua Dos Aimores, 2480 - Lourdes, Belo Horizonte - MG</span>
         </div>
         <div className="flex items-center gap-2">
           <Clock size={16} className="text-primary flex-shrink-0" />
@@ -276,7 +276,7 @@ export default function App() {
         </div>
         
         <div className={cn(
-          "relative z-10 px-6 mt-16 md:mt-24 w-full transition-all duration-500",
+          "relative z-10 px-6 mt-16 md:mt-24 pb-20 w-full transition-all duration-500",
           HERO_SLIDES[currentHeroSlide].featuredImage ? "max-w-6xl text-left" : "max-w-5xl text-center"
         )}>
           <AnimatePresence mode="wait">
@@ -362,22 +362,19 @@ export default function App() {
         </div>
 
         {/* Indicators */}
-        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
           {HERO_SLIDES.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentHeroSlide(idx)}
               className={cn(
-                "w-2.5 h-2.5 rounded-full transition-all duration-300",
+                "w-2 h-2 rounded-full transition-all duration-300",
                 currentHeroSlide === idx ? "bg-primary scale-125" : "bg-primary/30 hover:bg-primary/60"
               )}
             />
           ))}
         </div>
-        
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-          <ChevronDown className="text-primary w-8 h-8" />
-        </div>
+
       </header>
 
       {/* Doctors */}
