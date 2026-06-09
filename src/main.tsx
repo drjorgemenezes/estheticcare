@@ -5,6 +5,7 @@ import App from './App.tsx';
 import Procedimento from './pages/Procedimento.tsx';
 import Orientacoes from './pages/Orientacoes.tsx';
 import Biografia from './pages/Biografia.tsx';
+import PosPerdaPonderal from './pages/PosPerdaPonderal.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/procedimento/:id" element={<Procedimento />} />
         <Route path="/orientacoes" element={<Orientacoes />} />
         <Route path="/biografia" element={<Biografia />} />
+        <Route path="/pos-perda-ponderal" element={<PosPerdaPonderal />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -24,6 +24,21 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
 import Header from './components/Header';
+import homePosBariatricaText from '../conteudos/home-pos-bariatrica.txt?raw';
+
+const parsePosBariatrica = (text: string) => {
+  const data: Record<string, string> = {};
+  text.split('\n').forEach(line => {
+    const splitIndex = line.indexOf(':');
+    if (splitIndex > -1) {
+      const key = line.slice(0, splitIndex).trim();
+      const value = line.slice(splitIndex + 1).trim();
+      data[key] = value;
+    }
+  });
+  return data;
+};
+const homePosBariatricaData = parsePosBariatrica(homePosBariatricaText);
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -462,6 +477,59 @@ export default function App() {
           <ProcedureCarousel category="FACE" title="Cirurgias de Face" />
           <ProcedureCarousel category="CORPO" title="Cirurgias de Corpo" />
           <ProcedureCarousel category="MAMAS" title="Cirurgias de Mamas" />
+        </div>
+      </section>
+
+      {/* Programa Pós-Bariátrica Highlight Section */}
+      <section className="py-32 bg-[#090909] relative overflow-hidden border-t border-primary/10">
+        {/* Glow Effects */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute right-0 bottom-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            
+            {/* Coluna de Texto */}
+            <div className="lg:col-span-6 space-y-8 text-left">
+              <div className="space-y-4">
+                <span className="font-label uppercase tracking-[0.4em] text-primary text-xs block font-bold">
+                  {homePosBariatricaData['LABEL'] || 'Programa Especializado'}
+                </span>
+                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-[#f5f5f5] leading-tight">
+                  {homePosBariatricaData['TITULO_1'] || 'A Escultura do Seu'} <br />
+                  <span className="italic text-primary gold-gradient-text font-normal">{homePosBariatricaData['TITULO_2'] || 'Novo Contorno'}</span>
+                </h2>
+                <div className="w-16 h-[1px] bg-primary/50 my-6"></div>
+              </div>
+              
+              <p className="text-[#a0a0a0] text-base md:text-lg font-light leading-relaxed">
+                {homePosBariatricaData['DESCRICAO'] || 'A perda massiva de peso é um marco histórico na sua saúde. Para consolidar essa vitória, o programa de cirurgias reconstrutoras pós-bariátrica foca no tratamento do excesso de pele e flacidez muscular, restaurando a firmeza e redesenhando a silhueta natural do corpo.'}
+              </p>
+              
+              <div className="pt-6">
+                <Link 
+                  to="/pos-perda-ponderal" 
+                  className="gold-shimmer-btn text-on-primary px-10 py-5 font-label uppercase tracking-widest font-bold text-xs inline-block hover:scale-[1.02] transition-transform duration-300"
+                >
+                  {homePosBariatricaData['BOTAO'] || 'Conhecer Programa Pós-Bariátrica'}
+                </Link>
+              </div>
+            </div>
+
+            {/* Coluna da Imagem */}
+            <div className="lg:col-span-6 relative flex justify-center items-center h-full select-none mt-10 lg:mt-0">
+              {/* Imagem Principal */}
+              <div className="relative w-full max-w-[460px] aspect-[4/5] z-20 shadow-2xl rounded-2xl overflow-hidden border border-white/5 hover:shadow-[0_0_40px_rgba(201,168,76,0.1)] transition-all duration-700 bg-surface group">
+                <img 
+                  src="/cirurgiacorretiva.png" 
+                  alt="Cirurgia Plástica Corretiva Pós-Perda Ponderal" 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-transparent opacity-90 pointer-events-none"></div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
