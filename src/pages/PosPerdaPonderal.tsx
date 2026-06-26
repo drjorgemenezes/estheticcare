@@ -41,7 +41,7 @@ export default function PosPerdaPonderal() {
         <div className="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row gap-12 items-start">
           
           {/* Sidebar Navigation */}
-          <aside className="w-full lg:w-1/4 sticky top-32 bg-gray-50 p-6 border-l-4 border-gray-400">
+          <aside className="w-full lg:w-1/4 static lg:sticky lg:top-32 bg-gray-50 p-6 border-l-4 border-gray-400 z-10">
             <h3 className="text-xl font-serif font-bold text-gray-900 mb-4">Índice</h3>
             <nav className="flex flex-col space-y-3 text-gray-700">
               {PROCEDIMENTOS.map((proc) => (

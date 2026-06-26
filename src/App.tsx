@@ -393,59 +393,74 @@ export default function App() {
       </header>
 
       {/* Doctors */}
-      <section className="py-32 bg-surface-container-lowest overflow-hidden" id="equipe">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start mb-20 gap-8">
-             <div className="max-w-2xl">
-               <span className="font-label uppercase tracking-[0.3em] text-primary text-sm mb-4 block">Especialista</span>
-               <h2 className="font-headline text-4xl md:text-6xl text-on-surface">Excelência que Inspira Confiança</h2>
-             </div>
-            <ul className="text-on-surface-variant font-light max-w-xl space-y-1.5">
-              {[
-                "Membro titular da Sociedade Brasileira de Cirurgia Plástica",
-                "Cirurgião plástico certificado pelo Conselho Federal de Medicina",
-                "39 anos de experiência em cirurgia plástica",
-                "Mestre em Cirurgia Plástica pela Universidade Federal de São Paulo – Escola Paulista de Medicina (UNIFESP/EPM)"
-              ].map((item, i) => (
-                <li key={i} className="text-sm md:text-base leading-relaxed">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          <div className="flex justify-center">
-            {[
-              { name: 'Dr. Jorge Menezes', role: 'Cirurgião Plástico', desc: 'Especialista em procedimentos estéticos e cirúrgicos, faciais e de contorno corporal.', img: IMAGES.drJorge, crm: 'CRM/MG 19854 | RQE 6085' }
-            ].map((doc) => (
-              <motion.div 
-                key={doc.name}
-                whileHover={{ y: -10 }}
-                className="group relative flex flex-col md:flex-row items-center gap-12 p-8 bg-surface-container-low hover:bg-surface-container-high transition-colors"
-              >
-                <div className="relative w-64 h-64 flex-shrink-0">
-                  <div className="absolute inset-0 border-2 border-primary rotate-3 group-hover:rotate-0 transition-transform duration-500"></div>
-                  <img 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
-                    src={doc.img}
-                    alt={doc.name}
-                    referrerPolicy="no-referrer"
-                  />
+      <section className="py-32 bg-surface-container-lowest overflow-hidden relative" id="equipe">
+        {/* Decorative background element */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+            
+            {/* Image Column */}
+            <div className="lg:col-span-5 relative group">
+              <div className="absolute -inset-4 border border-primary/20 rotate-3 group-hover:rotate-0 transition-transform duration-700"></div>
+              <div className="relative w-full aspect-[4/5] overflow-hidden bg-surface-container shadow-2xl">
+                <img 
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 object-top" 
+                  src={IMAGES.drJorge}
+                  alt="Dr. Jorge Menezes"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+              </div>
+            </div>
+
+            {/* Text Content Column */}
+            <div className="lg:col-span-7 space-y-10">
+              <div className="space-y-4">
+                <span className="font-label uppercase tracking-[0.3em] text-primary text-xs block font-bold">Diretor Técnico</span>
+                <h2 className="font-headline text-5xl md:text-6xl text-on-surface leading-tight">
+                  Dr. Jorge Menezes
+                </h2>
+                <div className="flex flex-wrap items-center gap-4 text-on-surface-variant">
+                  <span className="font-label uppercase tracking-widest text-[10px] text-primary">Cirurgião Plástico</span>
+                  <div className="w-1 h-1 rounded-full bg-primary/40"></div>
+                  <span className="font-label text-primary/80 text-[10px] tracking-widest">CRM/MG 19854 | RQE 6085</span>
                 </div>
-                <div className="text-center md:text-left">
-                  <h4 className="font-headline text-3xl text-primary mb-2">{doc.name}</h4>
-                  <p className="font-label uppercase tracking-widest text-[10px] text-on-surface-variant mb-4">{doc.role}</p>
-                  <p className="text-on-surface-variant text-sm font-light mb-6">{doc.desc}</p>
-                  <span className="font-label text-primary/60 text-[10px] tracking-widest block mb-8">{doc.crm}</span>
-                  <Link 
-                    to="/biografia" 
-                    className="gold-shimmer-btn text-on-primary px-8 py-3 font-label uppercase tracking-widest font-bold text-[10px] inline-block"
-                  >
-                    Conheça a Trajetória
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+              </div>
+
+              <div className="w-16 h-[1px] bg-primary/30"></div>
+
+              <p className="text-on-surface-variant text-lg font-light leading-relaxed">
+                Especialista em procedimentos estéticos e cirúrgicos, faciais e de contorno corporal. Há 39 anos unindo técnica precisa, segurança e um olhar artístico para promover saúde e bem-estar.
+              </p>
+
+              {/* Credentials List */}
+              <ul className="space-y-4 pt-2">
+                {[
+                  "Membro titular da Sociedade Brasileira de Cirurgia Plástica",
+                  "Mestre em Cirurgia Plástica (UNIFESP/EPM)",
+                  "Certificado pelo Conselho Federal de Medicina",
+                  "Excelência e ética como pilares de cada tratamento"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-4 group/item">
+                    <div className="mt-2.5 flex-shrink-0 w-1.5 h-1.5 rotate-45 bg-primary/40 group-hover/item:bg-primary group-hover/item:scale-125 transition-all duration-300 shadow-[0_0_8px_rgba(201,168,76,0.5)]"></div>
+                    <span className="text-sm md:text-base text-on-surface-variant font-light group-hover/item:text-on-surface transition-colors">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-6">
+                <Link 
+                  to="/biografia" 
+                  className="gold-shimmer-btn text-on-primary px-10 py-5 font-label uppercase tracking-widest font-bold text-xs inline-block hover:scale-[1.02] transition-transform duration-300 shadow-xl"
+                >
+                  Conheça a Trajetória Completa
+                </Link>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

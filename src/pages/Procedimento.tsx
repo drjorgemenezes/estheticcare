@@ -175,34 +175,18 @@ export default function Procedimento() {
       <main className="pt-24">
         {/* Overview Section */}
         <section className="py-24 px-6 md:px-12 bg-surface-container-low">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-            <div className="relative group overflow-hidden">
-              <div className="absolute -top-4 -left-4 w-32 h-32 border-t border-l border-primary/30"></div>
-              <img 
-                className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]" 
-                alt={current.title} 
-                src={currentImage}
-              />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 border-b border-r border-primary/30"></div>
-              
-                <div className="absolute bottom-6 left-6 z-10 max-w-[240px]">
-                  <div className="border-l border-primary/40 pl-4 py-1">
-                    <p className="font-label text-[9px] uppercase tracking-[0.15em] text-white/50 leading-relaxed font-medium">
-                      <span className="text-primary/70">*</span> Imagem meramente ilustrativa. Os resultados podem variar de acordo com cada paciente.
-                    </p>
-                  </div>
-                </div>
-            </div>
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
             
-            <div className="space-y-12">
-              <div className="space-y-4 mb-12">
+            {/* Text Column (Left) */}
+            <div className="space-y-12 order-1 lg:col-span-7">
+              <div className="space-y-6 mb-12">
                 <span className="font-label uppercase tracking-[0.3em] text-primary mb-2 block text-xs">
                   {current.isCosmiatria ? 'Cosmiatria & Rejuvenescimento' : 'Cirurgia Plástica de Excelência'}
                 </span>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold tracking-tight gold-gradient-text leading-tight">
+                <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight gold-gradient-text leading-tight">
                   {current.title}
                 </h1>
-                <p className="font-headline italic text-lg md:text-xl text-on-surface-variant leading-relaxed">
+                <p className="font-headline italic text-xl md:text-2xl text-on-surface-variant leading-relaxed border-l-2 border-primary/30 pl-6">
                   {current.hook}
                 </p>
               </div>
@@ -247,6 +231,30 @@ export default function Procedimento() {
                 </div>
               )}
             </div>
+
+            {/* Image Column (Right) */}
+            <div className="relative group overflow-hidden order-2 lg:col-span-5 lg:sticky lg:top-32">
+              {/* Decorative Borders */}
+              <div className="absolute -top-4 -right-4 w-32 h-32 border-t border-r border-primary/30"></div>
+              
+              <img 
+                className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl transition-transform duration-700 group-hover:scale-[1.01]" 
+                alt={current.title} 
+                src={currentImage}
+              />
+              
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 border-b border-l border-primary/30"></div>
+              
+              {/* Disclaimer */}
+              <div className="absolute bottom-6 right-6 z-10 max-w-[240px] text-right">
+                <div className="border-r border-primary/40 pr-4 py-1 bg-black/20 backdrop-blur-sm rounded-l-sm">
+                  <p className="font-label text-[9px] uppercase tracking-[0.15em] text-white/70 leading-relaxed font-medium">
+                    <span className="text-primary">*</span> Imagem meramente ilustrativa. Resultados variam por paciente.
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -310,34 +318,37 @@ export default function Procedimento() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Pagamento à Vista */}
-              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
-                  <Banknote className="text-primary" size={24} strokeWidth={1.5} />
+              <div className="relative p-10 bg-surface-container hover:bg-surface-container-high transition-all duration-500 group border-t border-primary/10">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="mb-8 transform group-hover:-translate-y-1 transition-transform duration-500">
+                  <Banknote className="text-primary/60 group-hover:text-primary transition-colors duration-500" size={32} strokeWidth={1} />
                 </div>
-                <h3 className="font-headline text-xl text-on-surface mb-4">À Vista</h3>
-                <p className="text-on-surface-variant font-light leading-relaxed">
+                <h3 className="font-headline text-2xl text-on-surface mb-4 transition-all duration-500">À Vista</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed group-hover:text-on-surface transition-colors duration-500">
                   Condições exclusivas para pagamentos à vista, garantindo o melhor planejamento para a realização do seu procedimento.
                 </p>
               </div>
 
               {/* Cartão de Crédito */}
-              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
-                  <CreditCard className="text-primary" size={24} strokeWidth={1.5} />
+              <div className="relative p-10 bg-surface-container hover:bg-surface-container-high transition-all duration-500 group border-t border-primary/10">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="mb-8 transform group-hover:-translate-y-1 transition-transform duration-500">
+                  <CreditCard className="text-primary/60 group-hover:text-primary transition-colors duration-500" size={32} strokeWidth={1} />
                 </div>
-                <h3 className="font-headline text-xl text-on-surface mb-4">Cartão de Crédito</h3>
-                <p className="text-on-surface-variant font-light leading-relaxed">
+                <h3 className="font-headline text-2xl text-on-surface mb-4 transition-all duration-500">Cartão de Crédito</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed group-hover:text-on-surface transition-colors duration-500">
                   Facilidade e segurança no parcelamento através de cartões de crédito, aceitando as principais bandeiras do mercado.
                 </p>
               </div>
 
               {/* Financiamento */}
-              <div className="bg-surface-container p-8 rounded-sm shadow-sm border border-primary/10 hover:border-primary/30 transition-colors group">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 rounded-full group-hover:scale-110 transition-transform">
-                  <Landmark className="text-primary" size={24} strokeWidth={1.5} />
+              <div className="relative p-10 bg-surface-container hover:bg-surface-container-high transition-all duration-500 group border-t border-primary/10">
+                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="mb-8 transform group-hover:-translate-y-1 transition-transform duration-500">
+                  <Landmark className="text-primary/60 group-hover:text-primary transition-colors duration-500" size={32} strokeWidth={1} />
                 </div>
-                <h3 className="font-headline text-xl text-on-surface mb-4">Financiamento de Cirurgia</h3>
-                <p className="text-on-surface-variant font-light leading-relaxed">
+                <h3 className="font-headline text-2xl text-on-surface mb-4 transition-all duration-500">Financiamento</h3>
+                <p className="text-on-surface-variant font-light leading-relaxed group-hover:text-on-surface transition-colors duration-500">
                   Formas especiais de financiamento voltadas exclusivamente para cirurgias plásticas, viabilizando o seu sonho com flexibilidade.
                 </p>
               </div>
