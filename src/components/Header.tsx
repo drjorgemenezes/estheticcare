@@ -108,29 +108,8 @@ export default function Header() {
 
             <div className="relative group">
               <Link to="/pos-perda-ponderal" className="flex items-center gap-1 font-label uppercase tracking-[0.15em] text-[10px] font-medium text-white/80 group-hover:text-primary transition-colors py-2">
-                Pós-Bariátrica <ChevronDown size={14} className="transition-transform group-hover:rotate-180" />
+                Pós-Emagrecimento
               </Link>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 w-72 z-[120]">
-                <div className="absolute -top-4 left-0 w-full h-4"></div>
-                <div className="bg-[#0a0a0a]/95 backdrop-blur-md border border-primary/20 text-white/90 flex flex-col text-sm shadow-xl font-body relative rounded-md max-h-[60vh] overflow-y-auto custom-scrollbar">
-                  <Link to="/pos-perda-ponderal" className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors block border-b border-white/10 font-medium text-primary">
-                    Programa Pós-Bariátrica (Geral)
-                  </Link>
-                  {[
-                    { name: "Mama Pós-Bariátrica", id: "mama-pos-bariatrica" },
-                    { name: "Abdômen Pós-Bariátrica", id: "abdomen-pos-bariatrica" },
-                    { name: "Lifting de Braço (Braquioplastia)", id: "braquioplastia-pos-bariatrica" },
-                    { name: "Lifting de Coxas (Cruroplastia)", id: "cruroplastia-pos-bariatrica" },
-                    { name: "Dorsoplastia (Dorso)", id: "dorsoplastia-pos-bariatrica" },
-                    { name: "Lifting Facial", id: "lifting-facial-pos-bariatrica" },
-                    { name: "Flacidez de Submento", id: "flacidez-submento-pos-bariatrica" }
-                  ].map((item) => (
-                    <Link key={item.id} to={`/procedimento/${item.id}`} className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors block border-b border-white/5 last:border-0">
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
 
             <div className="relative group">
@@ -203,7 +182,7 @@ export default function Header() {
               <Link to="/" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Home</Link>
               <Link to="/biografia" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Dr. Jorge Menezes</Link>
               <a href="/#procedimentos" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Cirurgias Plásticas</a>
-              <Link to="/pos-perda-ponderal" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Pós-Bariátrica</Link>
+              <Link to="/pos-perda-ponderal" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Pós-Emagrecimento</Link>
               <a href="/#cosmiatria" onClick={() => setMobileMenuOpen(false)} className="font-headline text-3xl text-on-surface hover:text-primary transition-colors">Cosmiatria</a>
               <Link 
                 to="/orientacoes"

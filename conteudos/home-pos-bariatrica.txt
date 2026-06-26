@@ -1,5 +1,5 @@
-LABEL: A CONQUISTA QUE VEM DEPOIS DO EMAGRECIMENTO
-TITULO_1: Cirurgias Plásticas Corretivas
-TITULO_2: Pós-Perda Ponderal
-DESCRICAO: Você fez a parte mais difícil — perder o peso. Agora é hora de tratar as marcas que ficaram. Indicadas para pacientes pós-bariátrica, usuários de medicamentos emagrecedores (canetas) ou que emagreceram com dieta e acompanhamento nutricional.
-BOTAO: Conheça as Opções
+LABEL: Pós-Bariátrica & Grandes Perdas Ponderais
+TITULO_1: Você venceu o peso.
+TITULO_2: Agora, complete sua transformação.
+DESCRICAO: Cirurgias corretivas para quem emagreceu — seja por bariátrica, canetas ou dieta — e deseja eliminar o excesso de pele e restaurar o contorno corporal que o esforço merece.
+BOTAO: Conheça os Procedimentos
