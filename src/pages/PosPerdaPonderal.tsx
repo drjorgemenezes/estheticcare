@@ -70,17 +70,7 @@ export default function PosPerdaPonderal() {
             ))}
           </div>
 
-          <div className="mt-8 bg-gray-50 p-8 border-l-4 border-gray-400">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Requisitos Clínicos</h3>
-            <ul className="list-disc pl-5 space-y-3 text-lg text-gray-800">
-              <li>
-                <strong>Atenção ao Momento Certo:</strong> A indicação cirúrgica só é autorizada para pacientes que estejam com peso estabilizado (platô de peso) há pelo menos 3 a 6 meses. O emagrecimento ativo precisa ter sido interrompido.
-              </li>
-              <li>
-                <strong>Critérios de Nutrição:</strong> É mandatório realizar uma triagem laboratorial que comprove níveis seguros de proteínas, ferro e vitaminas, evitando complicações na cicatrização e no risco anestésico.
-              </li>
-            </ul>
-          </div>
+
         </section>
 
         {/* Procedures - Editorial Layout */}
