@@ -1,5 +1,5 @@
-LABEL: Pós-Bariátrica & Grandes Perdas Ponderais
-TITULO_1: Você venceu o peso.
-TITULO_2: Agora, complete sua transformação.
-DESCRICAO: Cirurgias corretivas para quem emagreceu — seja por bariátrica, canetas ou dieta — e deseja eliminar o excesso de pele e restaurar o contorno corporal que o esforço merece.
-BOTAO: Conheça os Procedimentos
+LABEL: Contorno Corporal
+TITULO_1: Elimine a flacidez.
+TITULO_2: Revele seu novo corpo.
+DESCRICAO: Cirurgias reparadoras para quem teve grandes perdas de peso. Remova o excesso de pele residual e restaure a harmonia e a firmeza da sua silhueta com resultados definitivos.
+BOTAO: Conhecer Procedimentos

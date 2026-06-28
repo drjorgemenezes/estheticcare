@@ -393,29 +393,41 @@ export default function App() {
       </header>
 
       {/* Doctors */}
-      <section className="py-32 bg-surface-container-lowest overflow-hidden relative" id="equipe">
+      <section className="pt-8 md:pt-10 pb-4 bg-surface-container-lowest overflow-hidden relative" id="equipe">
         {/* Decorative background element */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             
             {/* Image Column */}
-            <div className="lg:col-span-5 relative group">
-              <div className="absolute -inset-4 border border-primary/20 rotate-3 group-hover:rotate-0 transition-transform duration-700"></div>
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-surface-container shadow-2xl">
-                <img 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 object-top" 
-                  src={IMAGES.drJorge}
-                  alt="Dr. Jorge Menezes"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+            <div className="lg:col-span-4 flex flex-col gap-8 mx-auto w-full max-w-sm lg:max-w-none">
+              <div className="relative group">
+                <div className="absolute -inset-4 border border-primary/20 rotate-3 group-hover:rotate-0 transition-transform duration-700"></div>
+                <div className="relative w-full aspect-square overflow-hidden bg-surface-container shadow-2xl">
+                  <img 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 object-top" 
+                    src={IMAGES.drJorge}
+                    alt="Dr. Jorge Menezes"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 via-transparent to-transparent opacity-80 pointer-events-none"></div>
+                </div>
+              </div>
+
+              <div className="w-full">
+                <Link 
+                  to="/biografia" 
+                  className="w-full text-center gold-shimmer-btn text-on-primary px-4 py-4 font-label uppercase tracking-widest font-bold text-[11px] block hover:scale-[1.02] transition-transform duration-300 shadow-xl"
+                >
+                  Conheça a Trajetória Completa
+                </Link>
               </div>
             </div>
 
+
             {/* Text Content Column */}
-            <div className="lg:col-span-7 space-y-10">
+            <div className="lg:col-span-8 space-y-6">
               <div className="space-y-4">
                 <span className="font-label uppercase tracking-[0.3em] text-primary text-xs block font-bold">Diretor Técnico</span>
                 <h2 className="font-headline text-5xl md:text-6xl text-on-surface leading-tight">
@@ -450,15 +462,6 @@ export default function App() {
                   </li>
                 ))}
               </ul>
-
-              <div className="pt-6">
-                <Link 
-                  to="/biografia" 
-                  className="gold-shimmer-btn text-on-primary px-10 py-5 font-label uppercase tracking-widest font-bold text-xs inline-block hover:scale-[1.02] transition-transform duration-300 shadow-xl"
-                >
-                  Conheça a Trajetória Completa
-                </Link>
-              </div>
             </div>
 
           </div>
@@ -496,32 +499,32 @@ export default function App() {
       </section>
 
       {/* Programa Pós-Bariátrica Highlight Section */}
-      <section className="py-32 bg-[#090909] relative overflow-hidden border-t border-primary/10">
+      <section className="py-16 md:py-24 bg-[#090909] relative overflow-hidden border-t border-primary/10">
         {/* Glow Effects */}
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
         <div className="absolute right-0 bottom-0 w-80 h-80 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
             
             {/* Coluna de Texto */}
-            <div className="lg:col-span-6 space-y-8 text-left">
-              <div className="space-y-4">
-                <span className="font-label uppercase tracking-[0.4em] text-primary text-xs block font-bold">
+            <div className="lg:col-span-7 space-y-6 text-left">
+              <div className="space-y-3">
+                <span className="font-label uppercase tracking-[0.4em] text-primary text-[10px] md:text-xs block font-bold">
                   {homePosBariatricaData['LABEL'] || 'Programa Especializado'}
                 </span>
-                <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-[#f5f5f5] leading-tight">
+                <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-[#f5f5f5] leading-tight">
                   {homePosBariatricaData['TITULO_1'] || 'A Escultura do Seu'} <br />
                   <span className="italic text-primary gold-gradient-text font-normal">{homePosBariatricaData['TITULO_2'] || 'Novo Contorno'}</span>
                 </h2>
-                <div className="w-16 h-[1px] bg-primary/50 my-6"></div>
+                <div className="w-12 h-[1px] bg-primary/50 my-4"></div>
               </div>
               
-              <p className="text-[#a0a0a0] text-base md:text-lg font-light leading-relaxed">
+              <p className="text-[#a0a0a0] text-sm md:text-base font-light leading-relaxed max-w-xl">
                 {homePosBariatricaData['DESCRICAO'] || 'A perda massiva de peso é um marco histórico na sua saúde. Para consolidar essa vitória, o programa de cirurgias reconstrutoras pós-bariátrica foca no tratamento do excesso de pele e flacidez muscular, restaurando a firmeza e redesenhando a silhueta natural do corpo.'}
               </p>
               
-              <div className="pt-6">
+              <div className="pt-4">
                 <Link 
                   to="/pos-perda-ponderal" 
                   className="gold-shimmer-btn text-on-primary px-10 py-5 font-label uppercase tracking-widest font-bold text-xs inline-block hover:scale-[1.02] transition-transform duration-300"
@@ -532,15 +535,15 @@ export default function App() {
             </div>
 
             {/* Coluna da Imagem */}
-            <div className="lg:col-span-6 relative flex justify-center items-center h-full select-none mt-10 lg:mt-0">
+            <div className="lg:col-span-5 relative flex justify-center items-center h-full select-none mt-8 lg:mt-0">
               {/* Imagem Principal */}
-              <div className="relative w-full max-w-[460px] aspect-[4/5] z-20 shadow-2xl rounded-2xl overflow-hidden border border-white/5 hover:shadow-[0_0_40px_rgba(201,168,76,0.1)] transition-all duration-700 bg-surface group">
+              <div className="relative w-full max-w-[360px] aspect-square md:aspect-[4/5] z-20 shadow-2xl rounded-2xl overflow-hidden border border-white/5 hover:shadow-[0_0_30px_rgba(201,168,76,0.1)] transition-all duration-700 bg-surface group">
                 <img 
                   src="/cirurgiacorretiva.png" 
                   alt="Cirurgia Plástica Corretiva Pós-Perda Ponderal" 
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-transparent to-transparent opacity-90 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090909] via-[#090909]/20 to-transparent opacity-90 pointer-events-none"></div>
               </div>
             </div>
 
