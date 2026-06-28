@@ -69,6 +69,7 @@ export default function Header() {
                         <Link to="/procedimento/blefaroplastia" className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors">Blefaroplastia</Link>
                         <Link to="/procedimento/mentoplastia" className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors">Mentoplastia</Link>
                         <Link to="/procedimento/lifting-facial" className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors">Lifting Facial</Link>
+                        <Link to="/procedimento/tratamento-de-flacidez-e-gordura-no-submento-(papada)" className="px-4 py-3 hover:bg-primary/10 hover:text-primary transition-colors">Submento (Papada)</Link>
                       </div>
                     </div>
                   </div>
