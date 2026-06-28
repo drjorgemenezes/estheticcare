@@ -58,6 +58,7 @@ const PROCEDIMENTOS = [
   { title: 'Blefaroplastia', desc: 'Rejuvenescimento do olhar com naturalidade e leveza.', category: 'FACE' as ProcedureCategory, img: '/blefaroplastia.png' },
   { title: 'Mentoplastia', desc: 'Remodelação do queixo para um perfil facial mais equilibrado.', category: 'FACE' as ProcedureCategory, img: '/mentoplastia.png' },
   { title: 'Lifting Facial', desc: 'Rejuvenescimento facial avançado, suavizando rugas e flacidez profundas.', category: 'FACE' as ProcedureCategory, img: '/lifting facial.png' },
+  { title: 'Tratamento de flacidez e gordura no submento (papada)', desc: 'Cirurgia para correção de flacidez de submento (papada) ou acúmulo de gordura.', category: 'FACE' as ProcedureCategory, img: '/papada.png' },
   { title: 'Abdominoplastia', desc: 'Cirurgia que remove excesso de pele e gordura abdominal, indicada após gravidez ou perda de peso.', category: 'CORPO' as ProcedureCategory, img: '/ABDOMINOPLASTIA.png' },
   { title: 'Lipoaspiração', desc: 'Cirurgia que remove gordura localizada e remodela o corpo, melhorando o contorno corporal.', category: 'CORPO' as ProcedureCategory, img: '/LIPOASPIRACAO.png' },
   { title: 'Dorsoplastia', desc: 'Remoção de dobras de pele e flacidez na região das costas.', category: 'CORPO' as ProcedureCategory, img: '/dorsoplastia.png' },
