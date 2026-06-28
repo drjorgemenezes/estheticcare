@@ -647,6 +647,9 @@ export default function App() {
               <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed">
                 É a especialidade médica voltada à saúde e ao rejuvenescimento da pele — e é justamente o "médica" que faz toda a diferença. Diferente de procedimentos estéticos realizados por profissionais não médicos, a cosmiatria une formação clínica aprofundada, domínio da anatomia e capacidade diagnóstica para oferecer tratamentos verdadeiramente personalizados, seguros e baseados em evidências.
               </p>
+              <p className="text-on-surface-variant text-lg md:text-xl font-light leading-relaxed">
+                Os procedimentos cosmiátricos são realizados de forma ágil e segura no próprio consultório. São procedimentos rápidos, minimamente invasivos e que não oferecem os mesmos riscos de uma cirurgia, garantindo grande conforto e retorno imediato à sua rotina.
+              </p>
             </div>
           </div>
 
