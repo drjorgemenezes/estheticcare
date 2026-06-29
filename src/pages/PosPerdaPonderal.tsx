@@ -27,7 +27,6 @@ export default function PosPerdaPonderal() {
       {/* Hero Section Escura para abrigar o Header transparente e dar Contraste */}
       <header className="bg-surface text-on-surface pt-40 pb-20 px-6 border-b border-outline-variant/20 relative">
         <div className="max-w-4xl mx-auto space-y-8">
-          <p className="text-primary uppercase tracking-widest text-sm font-bold mb-4 font-label">{CABECALHO.tag}</p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-bold leading-tight mb-8">
             {CABECALHO.titulo}
           </h1>
