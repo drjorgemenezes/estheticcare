@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import SEO from '../components/SEO';
 import { 
   ChevronLeft, 
   ClipboardCheck, 
@@ -66,7 +67,10 @@ export default function Orientacoes() {
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
-      
+      <SEO 
+        title="Orientações e Preparo - Esthetic Care"
+        description="Orientações importantes para o seu pré e pós-operatório na Esthetic Care."
+      />
       <Header />
       {/* Back Button */}
       <div className="fixed top-24 left-0 z-50 p-8">

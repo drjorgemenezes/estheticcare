@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
+import SEO from '../components/SEO';
 import { 
   ChevronLeft, 
   ChevronDown, 
@@ -152,7 +153,21 @@ export default function Procedimento() {
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary/30 min-h-screen">
-      
+      <SEO 
+        title={`${current.title} - Esthetic Care | Dr. Jorge Menezes`}
+        description={current.hook}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "MedicalProcedure",
+          "name": current.title,
+          "description": current.hook,
+          "provider": {
+            "@type": "Physician",
+            "name": "Dr. Jorge Menezes",
+            "url": "https://www.estheticcare.com.br/biografia"
+          }
+        }}
+      />
       <Header />
       {/* Back Button */}
       <div className="fixed top-24 left-0 z-50 p-6 md:p-8">

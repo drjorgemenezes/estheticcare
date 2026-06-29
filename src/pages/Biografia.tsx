@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import SEO from '../components/SEO';
 import { 
   ArrowLeft,
   Award,
@@ -42,6 +43,23 @@ export default function Biografia() {
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen pb-20">
+      <SEO 
+        title="Biografia - Dr. Jorge Menezes | Cirurgia Plástica"
+        description="Conheça a trajetória profissional e acadêmica do Dr. Jorge Menezes, cirurgião plástico membro titular da Sociedade Brasileira de Cirurgia Plástica (SBCP)."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Physician",
+          "name": "Dr. Jorge Menezes",
+          "url": "https://www.estheticcare.com.br/biografia",
+          "jobTitle": "Cirurgião Plástico",
+          "memberOf": [
+            {
+              "@type": "MedicalOrganization",
+              "name": "SBCP - Sociedade Brasileira de Cirurgia Plástica"
+            }
+          ]
+        }}
+      />
       <Header />
       {/* Back Button */}
       <div className="fixed top-24 left-0 z-50 p-6 md:p-8">

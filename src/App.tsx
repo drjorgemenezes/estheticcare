@@ -23,6 +23,7 @@ import {
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { BeforeAfterSlider } from './components/BeforeAfterSlider';
+import SEO from './components/SEO';
 import Header from './components/Header';
 import homePosBariatricaText from '../conteudos/home-pos-bariatrica.txt?raw';
 
@@ -248,6 +249,27 @@ export default function App() {
 
   return (
     <div className="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
+      <SEO 
+        title="Esthetic Care - Dr. Jorge Menezes | Cirurgia Plástica"
+        description="A Esthetic Care oferece excelência em Cirurgia Plástica e Cosmiatria em Belo Horizonte. Procedimentos modernos, seguros e com resultados naturais."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "MedicalClinic",
+          "name": "Esthetic Care",
+          "url": "https://www.estheticcare.com.br",
+          "logo": "https://www.estheticcare.com.br/logo.svg",
+          "image": "https://www.estheticcare.com.br/logo.svg",
+          "description": "Cirurgia Plástica e Cosmiatria por Dr. Jorge Menezes em Belo Horizonte.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua Dos Aimores, 2480 - Lourdes",
+            "addressLocality": "Belo Horizonte",
+            "addressRegion": "MG",
+            "addressCountry": "BR"
+          },
+          "telephone": "+5531995740440"
+        }}
+      />
       <Header />
 
       {/* Hero Section */}

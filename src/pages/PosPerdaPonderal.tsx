@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import SEO from '../components/SEO';
 import { ArrowLeft } from 'lucide-react';
 import { CABECALHO, INTRODUCAO, PROCEDIMENTOS } from '../../conteudos/dados-pos-bariatrica';
 
@@ -12,6 +13,10 @@ export default function PosPerdaPonderal() {
 
   return (
     <div className="bg-white font-sans min-h-screen">
+      <SEO 
+        title="Cirurgias Pós-Bariátrica e Grandes Perdas Ponderais - Esthetic Care"
+        description="Conheça as cirurgias plásticas corretivas pós-grandes perdas de peso (como bariátrica ou uso de canetas). Restaure o contorno corporal com Dr. Jorge Menezes."
+      />
       <Header />
 
       <div className="fixed top-24 left-0 z-50 p-6 md:p-8 hidden md:block">
