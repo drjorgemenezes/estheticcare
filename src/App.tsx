@@ -194,7 +194,7 @@ const ProcedureCarousel = ({ category, title }: { category: ProcedureCategory, t
               {/* Background Image */}
               <img 
                 src={service.img} 
-                alt={service.title} 
+                alt={`Procedimento de ${service.title}`} 
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
               />
               
@@ -287,7 +287,7 @@ export default function App() {
               <img 
                 className="w-full h-full object-cover opacity-40 scale-105" 
                 src={HERO_SLIDES[currentHeroSlide].image}
-                alt={HERO_SLIDES[currentHeroSlide].titleMain}
+                alt={`Imagem de destaque: ${HERO_SLIDES[currentHeroSlide].titleMain}`}
                 referrerPolicy="no-referrer"
               />
             )}
@@ -768,7 +768,7 @@ export default function App() {
                           : 'border border-primary/20 opacity-60 hover:opacity-100 hover:border-primary/50 grayscale'
                       }`}
                     >
-                      <img src={caso.after} alt={`Caso ${caso.id}`} className="w-full h-full object-cover" />
+                      <img src={caso.after} alt={`Resultado após cirurgia - Caso ${caso.id}`} className="w-full h-full object-cover" />
                       {activePortfolioIndex === index && (
                         <div className="absolute inset-0 bg-primary/20"></div>
                       )}
@@ -911,7 +911,7 @@ export default function App() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="/whatsapp.svg" alt="WhatsApp" className="w-8 h-8 group-hover:rotate-12 transition-transform" />
+        <img src="/whatsapp.svg" alt="Ícone do WhatsApp para contato direto" className="w-8 h-8 group-hover:rotate-12 transition-transform" />
         <span className="absolute -top-12 right-0 bg-surface-container-high text-primary font-label text-[10px] uppercase tracking-widest px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-primary/20">
           WhatsApp
         </span>

@@ -143,7 +143,7 @@ export default function Biografia() {
       <section className="py-24 bg-surface px-6 relative overflow-hidden">
         {/* Subtle background element */}
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden select-none opacity-[0.02]">
-          <img src="/logo.svg" alt="" className="w-[120vw] max-w-[1000px] h-auto object-contain" />
+          <img src="/logo.svg" alt="Logomarca da Esthetic Care - Cirurgia Plástica" className="w-[120vw] max-w-[1000px] h-auto object-contain" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
