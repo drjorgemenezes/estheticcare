@@ -99,21 +99,6 @@ export default function PosPerdaPonderal() {
                 ))}
               </ul>
 
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Informações Práticas</h3>
-              <div className="text-lg text-gray-800 space-y-3 bg-gray-50 p-6">
-                <p>
-                  <strong className="text-gray-900">Tipo de Anestesia:</strong> {proc.infos.anestesia}
-                </p>
-                <p>
-                  <strong className="text-gray-900">Evolução do Resultado:</strong> {proc.infos.recuperacao}
-                </p>
-                <p>
-                  <strong className="text-gray-900">Padrão de Cicatrizes:</strong> {proc.infos.cicatrizes}
-                </p>
-                <p>
-                  <strong className="text-gray-900">Retorno à Rotina:</strong> {proc.infos.retorno}
-                </p>
-              </div>
 
             </article>
           ))}
