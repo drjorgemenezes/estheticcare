@@ -92,7 +92,7 @@ export default function Orientacoes() {
 
       <main>
         {/* Section 1: Hero */}
-        <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <section className="relative pt-48 pb-16 flex flex-col items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
               className="w-full h-full object-cover opacity-30" 
@@ -113,22 +113,12 @@ export default function Orientacoes() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="font-headline text-4xl md:text-6xl font-bold tracking-tight gold-gradient-text mb-8 leading-tight uppercase"
+              className="font-headline text-3xl md:text-5xl font-bold tracking-tight gold-gradient-text leading-tight uppercase"
             >
               Orientações <br/>Pré-Operatórias
             </motion.h1>
           </div>
         </section>
-
-        {/* Section 2: Intro */}
-        <section className="py-24 px-6 bg-surface">
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xl text-on-surface-variant leading-relaxed font-light italic">
-              "Um preparo adequado é o primeiro passo para o sucesso da sua cirurgia e uma recuperação mais rápida e tranquila."
-            </p>
-          </div>
-        </section>
-
         {/* Section 3: Detailed Guidelines */}
         <section className="py-24 px-6 bg-surface-container-low">
           <div className="max-w-4xl mx-auto">
