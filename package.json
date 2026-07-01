@@ -34,6 +34,7 @@
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
     "vite": "^6.2.0",
-    "vite-plugin-prerender": "^1.0.8"
+    "@prerenderer/rollup-plugin": "^0.3.12",
+    "@prerenderer/renderer-puppeteer": "^1.2.4"
   }
 }

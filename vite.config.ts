@@ -4,18 +4,16 @@ const require = createRequire(import.meta.url);
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';
-
-const prerender = require('vite-plugin-prerender');
-
+import {defineConfig, loadEnv} from 'vite';const prerender = require('@prerenderer/rollup-plugin');
+const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer');
 export default defineConfig(({mode}) => {  const env = loadEnv(mode, '.', '');
   return {
     plugins: [
       react(), 
       tailwindcss(),
-      // Pré-renderização será ativada no build (production)
       mode === 'production' && prerender({
         staticDir: path.join(__dirname, 'dist'),
+        renderer: new PuppeteerRenderer(),
         routes: [
           '/', 
           '/biografia', 
