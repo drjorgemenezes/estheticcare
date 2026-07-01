@@ -4,16 +4,35 @@ const require = createRequire(import.meta.url);
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig, loadEnv} from 'vite';const prerender = require('@prerenderer/rollup-plugin');
+import {defineConfig, loadEnv} from 'vite';
+
+const prerender = require('@prerenderer/rollup-plugin');
 const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer');
-export default defineConfig(({mode}) => {  const env = loadEnv(mode, '.', '');
+
+export default defineConfig(async ({mode}) => {  
+  const env = loadEnv(mode, '.', '');
+  
+  let executablePath;
+  let args = [];
+  
+  if (process.env.VERCEL) {
+    const chromium = (await import('@sparticuz/chromium')).default;
+    executablePath = await chromium.executablePath();
+    args = chromium.args;
+  }
+
   return {
     plugins: [
       react(), 
       tailwindcss(),
       mode === 'production' && prerender({
         staticDir: path.join(__dirname, 'dist'),
-        renderer: new PuppeteerRenderer(),
+        renderer: new PuppeteerRenderer({
+          launchOptions: {
+            executablePath,
+            args,
+          }
+        }),
         routes: [
           '/', 
           '/biografia', 
