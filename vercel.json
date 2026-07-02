@@ -1,7 +1,7 @@
 {
   "redirects": [
     {
-      "source": "/serviços/(.*)",
+      "source": "/servi%C3%A7os/(.*)",
       "destination": "/procedimento/$1",
       "permanent": true
     },
