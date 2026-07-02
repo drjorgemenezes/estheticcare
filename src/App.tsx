@@ -118,7 +118,7 @@ const HERO_SLIDES = [
       <div className="flex flex-col gap-3 items-center md:items-start text-[10px] md:text-xs">
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-primary flex-shrink-0" />
-          <span>Rua Dos Aimores, 2480 - Lourdes, Belo Horizonte - MG</span>
+          <span>Rua dos Aimorés, 2480 - Conj. 201/205, Lourdes, Belo Horizonte - MG, 30140-072, Brasil</span>
         </div>
         <div className="flex items-center gap-2">
           <Clock size={16} className="text-primary flex-shrink-0" />
@@ -262,9 +262,10 @@ export default function App() {
           "description": "Cirurgia Plástica e Cosmiatria por Dr. Jorge Menezes em Belo Horizonte.",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Rua Dos Aimores, 2480 - Lourdes",
+            "streetAddress": "Rua dos Aimorés, 2480 - Conj. 201/205, Lourdes",
             "addressLocality": "Belo Horizonte",
             "addressRegion": "MG",
+            "postalCode": "30140-072",
             "addressCountry": "BR"
           },
           "telephone": "+5531995740440"
@@ -810,7 +811,7 @@ export default function App() {
                 <MapPin size={18} />
                 <span className="font-label uppercase tracking-widest text-[10px]">Endereço</span>
               </div>
-              <p className="text-on-surface-variant font-light text-sm">Rua Dos Aimores, 2480 <br />Lourdes, Belo Horizonte - MG</p>
+              <p className="text-on-surface-variant font-light text-sm">Rua dos Aimorés, 2480 - Conj. 201/205 <br />Lourdes, Belo Horizonte - MG, 30140-072, Brasil</p>
             </div>
             
             <div className="space-y-4">
