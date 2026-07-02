@@ -812,6 +812,12 @@ export default function App() {
                 <span className="font-label uppercase tracking-widest text-[10px]">Endereço</span>
               </div>
               <p className="text-on-surface-variant font-light text-sm">Rua dos Aimorés, 2480 - Conj. 201/205 <br />Lourdes, Belo Horizonte - MG, 30140-072, Brasil</p>
+              <Link 
+                to="/localizacao"
+                className="inline-block border border-primary/30 text-primary px-6 py-2 font-label uppercase text-[10px] tracking-widest font-bold hover:bg-primary/10 transition-colors mt-2"
+              >
+                Ver no Mapa
+              </Link>
             </div>
             
             <div className="space-y-4">
