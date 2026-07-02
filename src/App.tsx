@@ -128,10 +128,10 @@ const HERO_SLIDES = [
     ),
     buttons: (
       <Link 
-        to="/biografia"
+        to="/localizacao"
         className="gold-shimmer-btn text-on-primary px-12 py-4 font-label uppercase tracking-widest text-[11px] font-bold w-full sm:w-auto text-center"
       >
-        Conheça a Trajetória
+        Ver no Mapa
       </Link>
     )
   }
