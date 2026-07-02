@@ -1,6 +1,16 @@
 {
   "redirects": [
     {
+      "source": "/serviços/(.*)",
+      "destination": "/procedimento/$1",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/(.*)",
+      "destination": "/procedimento/$1",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
