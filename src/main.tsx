@@ -1,6 +1,6 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.tsx';
 import Procedimento from './pages/Procedimento.tsx';
@@ -21,6 +21,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/biografia" element={<Biografia />} />
           <Route path="/pos-perda-ponderal" element={<PosPerdaPonderal />} />
           <Route path="/localizacao" element={<Localizacao />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
